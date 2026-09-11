@@ -16,7 +16,7 @@ from rembg import new_session, remove
 
 SOURCE = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.home() / "Downloads" / "IMG_4890.JPG"
 TARGET = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).parent.parent / "public" / "images" / "foto.png"
-CROP_FRACTION = 0.55  # setengah badan: kepala sampai bawah jaket
+CROP_FRACTION = float(sys.argv[3]) if len(sys.argv) > 3 else 0.55  # 0.55=setengah badan; 0.74=sampai bawah lutut
 MAX_HEIGHT = 1100
 PAD = 8
 

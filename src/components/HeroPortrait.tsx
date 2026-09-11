@@ -28,10 +28,10 @@ export default function HeroPortrait({ className, alt }: Props) {
       <Image
         src="/images/foto.png"
         alt={alt}
-        width={491}
+        width={406}
         height={1100}
         priority
-        className="relative z-10 mx-auto h-auto w-[52%]"
+        className="relative z-10 mx-auto h-auto w-[46%]"
       />
       <SquiggleMark className="absolute left-[0%] top-[3%] z-0 h-[14px] w-[86px]" />
       <svg
