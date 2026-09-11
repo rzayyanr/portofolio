@@ -31,7 +31,7 @@ export default function HeroPortrait({ className, alt }: Props) {
         width={491}
         height={1100}
         priority
-        className="relative z-10 mx-auto h-auto w-[60%]"
+        className="relative z-10 mx-auto h-auto w-[52%]"
       />
       <SquiggleMark className="absolute left-[0%] top-[3%] z-0 h-[14px] w-[86px]" />
       <svg
