@@ -24,10 +24,10 @@
 ## 2. Hero (kalimat pembuka terbesar)
 
 **Indonesia:**
-> Saya ~mahasiswa Sistem Informasi~ yang senang membangun **produk web yang rapi dan berguna.**
+> Saya ~frontend engineer~ sekaligus mahasiswa Sistem Informasi yang senang membangun **produk web yang rapi dan berguna.**
 
 **Inggris:**
-> I'm an ~Information Systems student~ who builds **clean and useful web products.**
+> I'm a ~frontend engineer~ and Information Systems student who builds **clean and useful web products.**
 
 - `~gelombang~` = diberi coretan oval biru tangan (seperti referensi)
 - `**tebal**` = diberi garis coretan merah di bawahnya
@@ -36,7 +36,7 @@
 
 | Indonesia | Inggris |
 |---|---|
-| Dua produk saya sudah hidup dan dipakai: portal informasi PKM untuk kampus, dan aplikasi belajar Bahasa Isyarat dengan pengenalan gestur real-time. Lihat selengkapnya di [GitHub] dan [LinkedIn], atau [kirim email] bilang halo. | Two of my products are live and in use: a campus PKM information portal, and a sign-language learning app with real-time gesture recognition. See more on [GitHub] and [LinkedIn], or just [send an email] saying hi. |
+| Dua produk saya sudah hidup dan dipakai: portal informasi PKM untuk kampus, dan aplikasi belajar Bahasa Isyarat dengan pengenalan gestur real-time. Di sela kuliah, saya bekerja sebagai frontend engineer di Skalar Solution. Lihat selengkapnya di [GitHub] dan [LinkedIn], atau [kirim email] bilang halo. | Two of my products are live and in use: a campus PKM information portal, and a sign-language learning app with real-time gesture recognition. Between classes, I work as a frontend engineer at Skalar Solution. See more on [GitHub] and [LinkedIn], or just [send an email] saying hi. |
 
 **Tombol:** `Lihat Proyek` / `View Projects` (scroll ke bagian proyek) · `Unduh CV` / `Download CV` (file `/cv.pdf` — **kamu yang menaruh filenya**)
 
@@ -86,7 +86,7 @@
 
 | Indonesia | Inggris |
 |---|---|
-| Saya Zayyan, mahasiswa Sistem Informasi semester 5 di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang — bukan sekadar tugas yang selesai. Kalau tidak di depan layar, saya biasanya main gitar atau menumpuk komik yang belum selesai dibaca. | I'm Zayyan, a 5th-semester Information Systems student at UPN Veteran Jakarta. I like building things people actually use — not just assignments that get done. When I'm not in front of a screen, I'm usually playing guitar or stacking up comics I haven't finished reading. |
+| Saya Zayyan, mahasiswa Sistem Informasi semester 5 (IPK 3,82) di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang — bukan sekadar tugas yang selesai. | I'm Zayyan, a 5th-semester Information Systems student (GPA 3.82) at UPN Veteran Jakarta. I like building things people actually use — not just assignments that get done. |
 
 **Cara saya kerja** *(kalimat yang dilihat reviewer Academy — bukti proses)*:
 
@@ -94,12 +94,14 @@
 |---|---|
 | Cara saya kerja: riset dulu, tulis PRD, catat keputusan penting sebagai ADR, bangun, lalu serahkan dengan dokumentasi rapi — supaya apa pun yang saya buat bisa dilanjutkan orang lain. | How I work: research first, write the PRD, log key decisions as ADRs, build, then hand over with clean documentation — so anything I make can be continued by someone else. |
 
-**Kegiatan & pencapaian:**
+**Pengalaman & Kegiatan:**
 
-| Kegiatan | Catatan |
+| Pengalaman | Catatan |
 |---|---|
-| Beasiswa Bank Indonesia — GENBI Jakarta | Akan tampil sebagai penghargaan |
-| KSM Multimedia — UPNVJ | *Placeholder — kamu isi detail (peran, tahun) nanti* |
+| Frontend Engineer — Skalar Solution | 2026–sekarang · implementasi UI, menjaga design system, integrasi API |
+| CEO & Co-Founder — Pronuts | 2026–sekarang · startup donat protein tinggi — Juara 2 UNEX 2026 tingkat nasional |
+| Beasiswa Bank Indonesia — GENBI Jakarta | Penerima beasiswa & anggota aktif GENBI Jakarta |
+| KSM Multimedia — UPNVJ | Staf Divisi Humas — komunikasi & kemitraan |
 
 **Strip skill:** React · Next.js · TypeScript · Tailwind CSS · Supabase · Python · MediaPipe · Figma
 

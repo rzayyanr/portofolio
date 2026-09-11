@@ -40,12 +40,12 @@ export const dictionary = {
     hero: {
       intro: {
         start: "Saya ",
-        mark: "mahasiswa Sistem Informasi",
-        middle: " yang senang membangun ",
+        mark: "frontend engineer",
+        middle: " sekaligus mahasiswa Sistem Informasi yang senang membangun ",
         underlined: "produk web yang rapi dan berguna.",
       },
       paragraphLead:
-        "Dua produk saya sudah hidup dan dipakai: portal informasi PKM untuk kampus, dan aplikasi belajar Bahasa Isyarat dengan pengenalan gestur real-time.",
+        "Dua produk saya sudah hidup dan dipakai: portal informasi PKM untuk kampus, dan aplikasi belajar Bahasa Isyarat dengan pengenalan gestur real-time. Di sela kuliah, saya bekerja sebagai frontend engineer di Skalar Solution.",
       paragraphLinks: {
         pre: " Lihat selengkapnya di ",
         github: "GitHub",
@@ -163,20 +163,28 @@ export const dictionary = {
     about: {
       heading: "Tentang Saya",
       story: [
-        "Saya Zayyan, mahasiswa Sistem Informasi semester 5 di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang — bukan sekadar tugas yang selesai.",
+        "Saya Zayyan, mahasiswa Sistem Informasi semester 5 (IPK 3,82) di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang — bukan sekadar tugas yang selesai.",
         "Kalau tidak di depan layar, saya biasanya main gitar atau menumpuk komik yang belum selesai dibaca.",
       ],
       howTitle: "Cara saya kerja",
       how: "Riset dulu, tulis PRD, catat keputusan penting sebagai ADR, bangun, lalu serahkan dengan dokumentasi rapi — supaya apa pun yang saya buat bisa dilanjutkan orang lain.",
-      activitiesTitle: "Kegiatan & pencapaian",
+      activitiesTitle: "Pengalaman & Kegiatan",
       activities: [
+        {
+          name: "Frontend Engineer — Skalar Solution",
+          note: "2026–sekarang · implementasi UI, menjaga design system, integrasi API",
+        },
+        {
+          name: "CEO & Co-Founder — Pronuts",
+          note: "2026–sekarang · startup donat protein tinggi — Juara 2 UNEX 2026 tingkat nasional",
+        },
         {
           name: "Beasiswa Bank Indonesia — GENBI Jakarta",
           note: "Penerima beasiswa & anggota aktif GENBI Jakarta",
         },
         {
           name: "KSM Multimedia — UPNVJ",
-          note: "Organisasi kemahasiswaan — detail menyusul",
+          note: "Staf Divisi Humas — komunikasi & kemitraan",
         },
       ],
       skillsTitle: "Perkakas yang biasa saya pakai",
@@ -210,13 +218,13 @@ export const dictionary = {
     },
     hero: {
       intro: {
-        start: "I'm an ",
-        mark: "Information Systems student",
-        middle: " who builds ",
+        start: "I'm a ",
+        mark: "frontend engineer",
+        middle: " and Information Systems student who builds ",
         underlined: "clean and useful web products.",
       },
       paragraphLead:
-        "Two of my products are live and in use: a campus PKM information portal, and a sign-language learning app with real-time gesture recognition.",
+        "Two of my products are live and in use: a campus PKM information portal, and a sign-language learning app with real-time gesture recognition. Between classes, I work as a frontend engineer at Skalar Solution.",
       paragraphLinks: {
         pre: " See more on ",
         github: "GitHub",
@@ -334,20 +342,28 @@ export const dictionary = {
     about: {
       heading: "About Me",
       story: [
-        "I'm Zayyan, a 5th-semester Information Systems student at UPN Veteran Jakarta. I like building things people actually use — not just assignments that get done.",
+        "I'm Zayyan, a 5th-semester Information Systems student (GPA 3.82) at UPN Veteran Jakarta. I like building things people actually use — not just assignments that get done.",
         "When I'm not in front of a screen, I'm usually playing guitar or stacking up comics I haven't finished reading.",
       ],
       howTitle: "How I work",
       how: "Research first, write the PRD, log key decisions as ADRs, build, then hand over with clean documentation — so anything I make can be continued by someone else.",
-      activitiesTitle: "Activities & achievements",
+      activitiesTitle: "Experience & Activities",
       activities: [
+        {
+          name: "Frontend Engineer — Skalar Solution",
+          note: "2026–present · implementing UI, maintaining the design system, API integration",
+        },
+        {
+          name: "CEO & Co-Founder — Pronuts",
+          note: "2026–present · high-protein donut startup — 2nd winner of UNEX 2026, national level",
+        },
         {
           name: "Bank Indonesia Scholarship — GENBI Jakarta",
           note: "Scholarship recipient & active GENBI Jakarta member",
         },
         {
           name: "KSM Multimedia — UPNVJ",
-          note: "Student organization — details to follow",
+          note: "Public Relations staff — communications & partnerships",
         },
       ],
       skillsTitle: "Tools I usually work with",

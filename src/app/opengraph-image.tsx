@@ -77,8 +77,7 @@ export default async function OpengraphImage() {
               maxWidth: 620,
             }}
           >
-            Mahasiswa Sistem Informasi yang membangun produk web yang rapi dan
-            berguna.
+            Frontend engineer yang membangun produk web yang rapi dan berguna.
           </div>
         </div>
         <div
