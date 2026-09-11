@@ -22,7 +22,7 @@ export default function Archive({ locale }: { locale: Locale }) {
           <h1 className="text-title mt-6 text-ink">{dict.archive.heading}</h1>
           <p className="text-desc mt-4 max-w-[520px] text-muted">{dict.archive.intro}</p>
         </Reveal>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {dict.projects.items.map((project, index) => (
             <Reveal key={project.title} delay={(index % 2) * 0.1} className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-[6px] border-[1.5px] border-ink/10 bg-white transition-all duration-200 hover:-translate-y-[3px] hover:border-scribble-blue/70 hover:shadow-[0_12px_32px_-14px_rgba(19,19,19,0.18)]">

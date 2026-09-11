@@ -33,6 +33,14 @@ export default function Contact({ locale }: { locale: Locale }) {
             >
               {dict.contact.linkedinLabel}
             </a>
+            <a
+              href="https://www.instagram.com/rzayyanr/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+            >
+              {dict.contact.instagramLabel}
+            </a>
           </div>
         </Reveal>
       </div>
