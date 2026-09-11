@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #131313;
+  --color-body: #5a6065;
+  --color-muted: #69737c;
+  --color-accent: #1e8bf1;
+  --color-accent-dark: #005bb1;
+  --color-scribble-blue: #a4dcfe;
+  --color-scribble-red: #ff9595;
+  --color-scribble-teal: #7cdfcd;
+  --color-btn: #edf2f5;
+  --color-btn-hover: #e0e7eb;
+  --color-tag-bg: #ebeef3;
+  --color-tag-text: #595d6d;
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-white font-sans text-body antialiased;
+}
+
+.container-site {
+  width: 100%;
+  max-width: 1300px;
+  margin-inline: auto;
+  padding-inline: 80px;
+}
+
+@media (max-width: 991px) {
+  .container-site {
+    padding-inline: 50px;
+  }
+}
+
+@media (max-width: 479px) {
+  .container-site {
+    padding-inline: 20px;
+  }
+}
+
+.text-hero {
+  font-size: clamp(26px, 1.6vw + 16px, 38px);
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.mark-oval {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath d='M14 52 C10 26 96 8 208 10 C310 12 388 26 386 48 C384 70 300 84 186 82 C88 80 18 68 16 48 C14 32 74 20 150 16' fill='none' stroke='%23A4DCFE' stroke-width='4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0.08em 0.14em;
+  margin: -0.08em -0.14em;
+}
+
+.text-title {
+  font-size: clamp(28px, 1.4vw + 14px, 34px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.text-lead {
+  font-size: clamp(19px, 1vw + 12px, 22px);
+  line-height: 1.45;
+}
+
+.text-desc {
+  font-size: clamp(18px, 0.8vw + 12px, 20px);
+  line-height: 1.45;
+}
