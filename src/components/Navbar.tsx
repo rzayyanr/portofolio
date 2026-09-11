@@ -16,7 +16,13 @@ function LinkedinIcon() {
   );
 }
 
-export default function Navbar({ locale }: { locale: Locale }) {
+export default function Navbar({
+  locale,
+  activePage,
+}: {
+  locale: Locale;
+  activePage?: "archive";
+}) {
   const dict = getDictionary(locale);
   const other: Locale = locale === "id" ? "en" : "id";
   return (
@@ -28,7 +34,11 @@ export default function Navbar({ locale }: { locale: Locale }) {
         <div className="flex items-center gap-5">
           <a
             href={archivePath(locale)}
-            className="text-[15px] font-semibold text-ink transition-colors hover:text-accent-dark"
+            className={
+              activePage === "archive"
+                ? "text-[15px] font-semibold text-accent-dark underline decoration-scribble-blue decoration-2 underline-offset-4"
+                : "text-[15px] font-semibold text-ink transition-colors hover:text-accent-dark"
+            }
           >
             {dict.nav.projects}
           </a>

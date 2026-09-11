@@ -29,6 +29,7 @@ export const dictionary = {
     },
     nav: {
       name: "Zayyan Rizka",
+      home: "Beranda",
       projects: "Proyek",
       toLang: "EN",
       toLangAria: "Beralih ke bahasa Inggris",
@@ -118,6 +119,7 @@ export const dictionary = {
     },
     catalog: {
       heading: "Katalog Design System",
+      short: "Design System",
       intro: "Warna, tipografi, dan komponen yang membangun situs ini — dokumentasi visual untuk diriku sendiri.",
       back: "Kembali ke beranda",
       labels: {
@@ -196,6 +198,7 @@ export const dictionary = {
     },
     nav: {
       name: "Zayyan Rizka",
+      home: "Home",
       projects: "Projects",
       toLang: "ID",
       toLangAria: "Switch to Indonesian",
@@ -285,6 +288,7 @@ export const dictionary = {
     },
     catalog: {
       heading: "Design System Catalog",
+      short: "Design System",
       intro: "The colors, typography, and components powering this site — a visual documentation for myself.",
       back: "Back to home",
       labels: {

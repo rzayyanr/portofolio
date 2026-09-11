@@ -69,7 +69,7 @@ export default async function SlugPage({
   }
   return (
     <>
-      <Navbar locale={locale} />
+      <Navbar locale={locale} activePage={kind === "archive" ? "archive" : undefined} />
       <main>{kind === "archive" ? <Archive locale={locale} /> : <Catalog locale={locale} />}</main>
       <Footer locale={locale} />
     </>

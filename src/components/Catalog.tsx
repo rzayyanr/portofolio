@@ -9,12 +9,16 @@ export default function Catalog({ locale }: { locale: Locale }) {
     <section className="pt-[120px] lg:pt-[180px]">
       <div className="container-site">
         <Reveal>
-          <a
-            href={`/${locale}`}
-            className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
-          >
-            ← {c.back}
-          </a>
+          <p className="text-[14px] text-muted">
+            <a
+              href={`/${locale}`}
+              className="transition-colors hover:text-accent-dark hover:underline"
+            >
+              {dict.nav.home}
+            </a>
+            <span className="mx-2 text-ink/30">/</span>
+            <span className="text-ink/70">{c.short}</span>
+          </p>
           <h1 className="text-title mt-6 text-ink">{c.heading}</h1>
           <p className="text-desc mt-4 max-w-[560px] text-muted">{c.intro}</p>
         </Reveal>
