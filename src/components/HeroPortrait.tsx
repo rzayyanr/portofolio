@@ -26,7 +26,7 @@ export default function HeroPortrait({ className, alt }: Props) {
         className="absolute -bottom-[4px] left-1/2 z-0 h-[18px] w-[72%] -translate-x-1/2 rounded-full bg-[#F4F7F9]"
       />
       <Image
-        src="/images/foto.png"
+        src="/images/foto-v2.png"
         alt={alt}
         width={406}
         height={1100}
