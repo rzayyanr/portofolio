@@ -47,7 +47,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
           <a
             href={`/${other}`}
             lang={other}
-            aria-label={dict.nav.toLangAria}
+            aria-label={`${dict.nav.toLang} · ${dict.nav.toLangAria}`}
             className="rounded-full border-2 border-ink/10 px-3.5 py-1.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {dict.nav.toLang}

@@ -21,7 +21,7 @@ export default function Contact({ locale }: { locale: Locale }) {
               href="https://github.com/rzayyanr"
               target="_blank"
               rel="noreferrer"
-              className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
             >
               {dict.contact.githubLabel}
             </a>
@@ -29,7 +29,7 @@ export default function Contact({ locale }: { locale: Locale }) {
               href="https://www.linkedin.com/in/rzayyanr/"
               target="_blank"
               rel="noreferrer"
-              className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
             >
               {dict.contact.linkedinLabel}
             </a>

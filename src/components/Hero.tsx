@@ -26,7 +26,7 @@ export default function Hero({ locale }: { locale: Locale }) {
               href="https://github.com/rzayyanr"
               target="_blank"
               rel="noreferrer"
-              className="text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-accent-dark underline decoration-scribble-blue decoration-2 underline-offset-4 transition-colors hover:text-[#004a94]"
             >
               {paragraphLinks.github}
             </a>
@@ -35,14 +35,14 @@ export default function Hero({ locale }: { locale: Locale }) {
               href="https://www.linkedin.com/in/rzayyanr/"
               target="_blank"
               rel="noreferrer"
-              className="text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-accent-dark underline decoration-scribble-blue decoration-2 underline-offset-4 transition-colors hover:text-[#004a94]"
             >
               {paragraphLinks.linkedin}
             </a>
             {paragraphLinks.mid2}
             <a
               href={dict.contact.email}
-              className="text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-accent-dark underline decoration-scribble-blue decoration-2 underline-offset-4 transition-colors hover:text-[#004a94]"
             >
               {paragraphLinks.email}
             </a>

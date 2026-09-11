@@ -54,7 +54,7 @@ export default async function LocaleLayout({
     <html lang={validLocale} className={publicSans.variable}>
       <body>
         {children}
-        <Analytics />
+        {process.env.NEXT_PUBLIC_VERCEL_ENV ? <Analytics /> : null}
       </body>
     </html>
   );

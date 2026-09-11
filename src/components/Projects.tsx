@@ -69,7 +69,7 @@ function ProjectCard({ project, index, locale }: CardProps) {
             href={project.links.github.href}
             target="_blank"
             rel="noreferrer"
-            className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-dark hover:underline"
+            className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
           >
             {dict.projects.githubLabel}
           </a>
@@ -78,7 +78,7 @@ function ProjectCard({ project, index, locale }: CardProps) {
               href={project.links.docs.href}
               target="_blank"
               rel="noreferrer"
-              className="text-[15px] font-semibold text-accent transition-colors hover:text-accent-dark hover:underline"
+              className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
             >
               {dict.projects.docsLabel}
             </a>
