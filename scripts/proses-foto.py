@@ -21,15 +21,23 @@ MAX_HEIGHT = 1100
 PAD = 8
 
 def main() -> None:
-    image = ImageOps.exif_transpose(Image.open(SOURCE)).convert("RGB")
-    width, height = image.size
-    print(f"Sumber: {SOURCE} ({width}x{height})")
+    image = ImageOps.exif_transpose(Image.open(SOURCE))
+    has_alpha = image.mode in ("RGBA", "LA") or (
+        image.mode == "P" and "transparency" in image.info
+    )
 
-    half_body = image.crop((0, 0, width, int(height * CROP_FRACTION)))
-    print(f"Crop setengah badan: {half_body.size[0]}x{half_body.size[1]}")
-
-    session = new_session("u2net")
-    cutout = remove(half_body, session=session)
+    if has_alpha:
+        # Foto sudah cutout (berlatar transparan) — lewati crop & penghapusan latar.
+        print(f"Sumber: {SOURCE} ({image.size[0]}x{image.size[1]}, sudah transparan)")
+        cutout = image
+    else:
+        image = image.convert("RGB")
+        width, height = image.size
+        print(f"Sumber: {SOURCE} ({width}x{height})")
+        half_body = image.crop((0, 0, width, int(height * CROP_FRACTION)))
+        print(f"Crop setengah badan: {half_body.size[0]}x{half_body.size[1]}")
+        session = new_session("u2net")
+        cutout = remove(half_body, session=session)
 
     box = cutout.getbbox()
     if box:

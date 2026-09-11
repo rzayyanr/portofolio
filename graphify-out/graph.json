@@ -499,6 +499,39 @@
       "norm_label": "config"
     },
     {
+      "label": "proses-foto.py",
+      "file_type": "code",
+      "source_file": "scripts/proses-foto.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_proses_foto",
+      "community": 6,
+      "community_name": "proses-foto.py",
+      "norm_label": "proses-foto.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/proses-foto.py",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "scripts_proses_foto_main",
+      "community": 6,
+      "community_name": "proses-foto.py",
+      "norm_label": "main()"
+    },
+    {
+      "label": "Proses foto hero: crop setengah badan + hapus latar belakang. Pemakaian: python\u2026",
+      "file_type": "rationale",
+      "source_file": "scripts/proses-foto.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_proses_foto_rationale_1",
+      "community": 6,
+      "community_name": "proses-foto.py",
+      "norm_label": "proses foto hero: crop setengah badan + hapus latar belakang. pemakaian: python..."
+    },
+    {
       "label": "layout.tsx",
       "file_type": "code",
       "source_file": "src/app/[locale]/layout.tsx",
@@ -769,8 +802,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_heroillustration",
-      "community": 9,
-      "community_name": "Hero.tsx",
+      "community": 17,
+      "community_name": "HeroIllustration.tsx",
       "norm_label": "heroillustration.tsx"
     },
     {
@@ -780,8 +813,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_heroillustration_props",
-      "community": 9,
-      "community_name": "Hero.tsx",
+      "community": 17,
+      "community_name": "HeroIllustration.tsx",
       "norm_label": "props"
     },
     {
@@ -791,9 +824,42 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_heroillustration_heroillustration",
+      "community": 17,
+      "community_name": "HeroIllustration.tsx",
+      "norm_label": "heroillustration()"
+    },
+    {
+      "label": "HeroPortrait.tsx",
+      "file_type": "code",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_heroportrait",
       "community": 9,
       "community_name": "Hero.tsx",
-      "norm_label": "heroillustration()"
+      "norm_label": "heroportrait.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_components_heroportrait_props",
+      "community": 9,
+      "community_name": "Hero.tsx",
+      "norm_label": "props"
+    },
+    {
+      "label": "HeroPortrait()",
+      "file_type": "code",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "src_components_heroportrait_heroportrait",
+      "community": 9,
+      "community_name": "Hero.tsx",
+      "norm_label": "heroportrait()"
     },
     {
       "label": "Navbar.tsx",
@@ -1030,7 +1096,7 @@
       "label": "ProjectItem",
       "file_type": "code",
       "source_file": "src/content/dictionary.ts",
-      "source_location": "L240",
+      "source_location": "L238",
       "_origin": "ast",
       "id": "src_content_dictionary_projectitem",
       "community": 0,
@@ -1041,7 +1107,7 @@
       "label": "getDictionary()",
       "file_type": "code",
       "source_file": "src/content/dictionary.ts",
-      "source_location": "L255",
+      "source_location": "L253",
       "_origin": "ast",
       "id": "src_content_dictionary_getdictionary",
       "community": 0,
@@ -1088,8 +1154,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tsconfig",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "tsconfig.json"
     },
     {
@@ -1308,8 +1374,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "tsconfig_include",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "include"
     },
     {
@@ -1319,8 +1385,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ref_next_env_d_ts",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "next-env.d.ts"
     },
     {
@@ -1330,8 +1396,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ref_ts",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "**/*.ts"
     },
     {
@@ -1341,8 +1407,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ref_tsx",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "**/*.tsx"
     },
     {
@@ -1352,8 +1418,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ref_next_types_ts",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": ".next/types/**/*.ts"
     },
     {
@@ -1363,8 +1429,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ref_next_dev_types_ts",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": ".next/dev/types/**/*.ts"
     },
     {
@@ -1374,8 +1440,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "tsconfig_exclude",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "exclude"
     },
     {
@@ -1385,8 +1451,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "ref_node_modules",
-      "community": 6,
-      "community_name": "include",
+      "community": 3,
+      "community_name": "compilerOptions",
       "norm_label": "node_modules"
     },
     {
@@ -2277,6 +2343,28 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/proses-foto.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_proses_foto",
+      "target": "scripts_proses_foto_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/proses-foto.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_proses_foto_rationale_1",
+      "target": "scripts_proses_foto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/app/[locale]/layout.tsx",
       "source_location": "L18",
       "weight": 1.0,
@@ -2928,7 +3016,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_hero",
-      "target": "src_components_heroillustration",
+      "target": "src_components_heroportrait",
       "confidence_score": 1.0
     },
     {
@@ -2940,7 +3028,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_hero",
-      "target": "src_components_heroillustration_heroillustration",
+      "target": "src_components_heroportrait_heroportrait",
       "confidence_score": 1.0
     },
     {
@@ -3059,6 +3147,52 @@
       "_origin": "ast",
       "source": "src_components_heroillustration",
       "target": "src_components_heroillustration_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_heroportrait",
+      "target": "src_components_heroportrait_heroportrait",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_heroportrait",
+      "target": "src_components_heroportrait_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_heroportrait",
+      "target": "src_components_scribbles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/HeroPortrait.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_heroportrait",
+      "target": "src_components_scribbles_squigglemark",
       "confidence_score": 1.0
     },
     {
@@ -3352,7 +3486,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/dictionary.ts",
-      "source_location": "L255",
+      "source_location": "L253",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_content_dictionary",
@@ -3396,7 +3530,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/dictionary.ts",
-      "source_location": "L240",
+      "source_location": "L238",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_content_dictionary",
@@ -3444,7 +3578,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/content/dictionary.ts",
-      "source_location": "L256",
+      "source_location": "L254",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_content_dictionary_getdictionary",
@@ -4144,5 +4278,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6c16f9a39e6343e0a99ae8478d27d5e05ef65652"
+  "built_at_commit": "15eab16d1ee77aa3a9f3bc6a49dc0204073e6021"
 }

@@ -28,7 +28,7 @@ export default function HeroPortrait({ className, alt }: Props) {
       <Image
         src="/images/foto.png"
         alt={alt}
-        width={554}
+        width={491}
         height={1100}
         priority
         className="relative z-10 mx-auto h-auto w-[60%]"
