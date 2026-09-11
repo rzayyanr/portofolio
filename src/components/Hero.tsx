@@ -1,6 +1,6 @@
 import { getDictionary, type Locale } from "@/content/dictionary";
 import { SquiggleMark } from "./scribbles";
-import HeroIllustration from "./HeroIllustration";
+import HeroPortrait from "./HeroPortrait";
 import Reveal from "./Reveal";
 
 export default function Hero({ locale }: { locale: Locale }) {
@@ -65,7 +65,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           </div>
         </Reveal>
         <Reveal delay={0.15} className="lg:col-span-5">
-          <HeroIllustration className="mx-auto w-full max-w-[340px]" title={dict.hero.illustrationAlt} />
+          <HeroPortrait className="mt-4" alt={dict.hero.portraitAlt} />
         </Reveal>
       </div>
     </section>

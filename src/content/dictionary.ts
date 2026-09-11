@@ -40,8 +40,7 @@ export const dictionary = {
       },
       ctaProjects: "Lihat Proyek",
       ctaCv: "Unduh CV",
-      illustrationAlt:
-        "Ilustrasi karakter yang sedang menulis kode di laptop dengan gitar bersandar di sebelahnya",
+      portraitAlt: "Foto Zayyan Rizka, setengah badan, dengan tangan menyilang",
     },
     projects: {
       heading: "Proyek Pilihan",
@@ -154,8 +153,7 @@ export const dictionary = {
       },
       ctaProjects: "View Projects",
       ctaCv: "Download CV",
-      illustrationAlt:
-        "Illustration of a character writing code on a laptop with a guitar leaning beside them",
+      portraitAlt: "Photo of Zayyan Rizka, half-body, with crossed arms",
     },
     projects: {
       heading: "Selected Projects",

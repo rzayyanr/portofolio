@@ -40,7 +40,7 @@
 
 **Tombol:** `Lihat Proyek` / `View Projects` (scroll ke bagian proyek) · `Unduh CV` / `Download CV` (file `/cv.pdf` — **kamu yang menaruh filenya**)
 
-**Ilustrasi kanan:** karakter flat duduk coding di laptop dengan gitar bersandar — SVG orisinal.
+**Ilustrasi kanan:** foto Zayyan (setengah badan, tangan menyilang, latar dihapus) dengan oval coretan biru sebagai backdrop — diproses dari `IMG_4890.JPG` via `scripts/proses-foto.py`.
 
 ---
 
