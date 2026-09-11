@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/components/Hero.tsx": {
-    "mtime": 1789154889.4454157,
-    "ast_hash": "098ea27dca94382584b4ea44b3f0a86d",
+    "mtime": 1789157585.3514202,
+    "ast_hash": "a3b89b519cc8528091d14e9b0cd9ff85",
     "semantic_hash": ""
   },
   "src/components/HeroIllustration.tsx": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "src/content/dictionary.ts": {
-    "mtime": 1789154278.0394864,
-    "ast_hash": "3dfef9826a856bba47d9e31553f462a4",
+    "mtime": 1789157585.3974295,
+    "ast_hash": "0c7f1f959c2d3d5026dfcea9608d9e61",
     "semantic_hash": ""
   },
   "src/middleware.ts": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "docs/konten.md": {
-    "mtime": 1789154055.392198,
-    "ast_hash": "e4a00911763e6c443bb2139fd6efb2e5",
+    "mtime": 1789157702.3643384,
+    "ast_hash": "3b0213a13adb1009dbc5e0e6e45437f0",
     "semantic_hash": ""
   },
   "docs/sitemap.md": {
@@ -142,6 +142,21 @@
   "src/app/icon.svg": {
     "mtime": 1789154278.1511662,
     "ast_hash": "63fa6dae1c93e301d497d7c6fe4a4eb8",
+    "semantic_hash": ""
+  },
+  "scripts/proses-foto.py": {
+    "mtime": 1789157447.8664083,
+    "ast_hash": "dfc74ff08b81812ffb7583231e9288c0",
+    "semantic_hash": ""
+  },
+  "src/components/HeroPortrait.tsx": {
+    "mtime": 1789157659.3246534,
+    "ast_hash": "2b1586968336b07b361b097d74c38205",
+    "semantic_hash": ""
+  },
+  "public/images/foto.png": {
+    "mtime": 1789157535.602953,
+    "ast_hash": "18c08842e6afced60ea40f8099c5a3b2",
     "semantic_hash": ""
   }
 }

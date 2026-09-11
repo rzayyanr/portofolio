@@ -22,14 +22,19 @@ export function OvalMark({ className }: MarkProps) {
   );
 }
 
-export function SquiggleMark({ className }: MarkProps) {
+type SquiggleProps = MarkProps & {
+  /** Bila true, garis menggambar sendiri saat induk .group di-hover. */
+  animated?: boolean;
+};
+
+export function SquiggleMark({ className, animated = false }: SquiggleProps) {
   return (
     <svg
       viewBox="0 0 250 22"
       fill="none"
       aria-hidden="true"
       preserveAspectRatio="none"
-      className={className}
+      className={`${animated ? "squiggle-draw " : ""}${className ?? ""}`}
     >
       <path
         d="M4 13 C18 5 30 19 46 12 C62 5 74 18 90 11 C106 4 118 17 134 11 C150 5 162 17 178 11 C194 5 206 16 222 10 C232 6 240 12 246 9"
@@ -37,6 +42,7 @@ export function SquiggleMark({ className }: MarkProps) {
         strokeWidth={4}
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
+        pathLength={animated ? 1 : undefined}
       />
     </svg>
   );

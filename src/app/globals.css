@@ -102,6 +102,23 @@ body {
   transform: none;
 }
 
+/* Coretan yang menggambar sendiri saat kartu di-hover */
+.squiggle-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.45s ease-out;
+}
+
+.group:hover .squiggle-draw path {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .squiggle-draw path {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
