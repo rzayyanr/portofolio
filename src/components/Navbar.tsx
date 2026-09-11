@@ -1,4 +1,4 @@
-import { getDictionary, type Locale } from "@/content/dictionary";
+import { archivePath, getDictionary, type Locale } from "@/content/dictionary";
 
 function GithubIcon() {
   return (
@@ -26,6 +26,12 @@ export default function Navbar({ locale }: { locale: Locale }) {
           {dict.nav.name}
         </a>
         <div className="flex items-center gap-5">
+          <a
+            href={archivePath(locale)}
+            className="text-[15px] font-semibold text-ink transition-colors hover:text-accent-dark"
+          >
+            {dict.nav.projects}
+          </a>
           <a
             href="https://github.com/rzayyanr"
             target="_blank"

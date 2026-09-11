@@ -18,5 +18,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       alternates: { languages: { id: `${base}/id`, en: `${base}/en` } },
     },
+    {
+      url: `${base}/id/proyek`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { id: `${base}/id/proyek`, en: `${base}/en/projects` } },
+    },
+    {
+      url: `${base}/en/projects`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: { languages: { id: `${base}/id/proyek`, en: `${base}/en/projects` } },
+    },
   ];
 }

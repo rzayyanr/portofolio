@@ -1,0 +1,75 @@
+import Image from "next/image";
+import { getDictionary, type Locale } from "@/content/dictionary";
+import Reveal from "./Reveal";
+
+export default function Archive({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  return (
+    <section className="pt-[120px] lg:pt-[180px]">
+      <div className="container-site">
+        <Reveal>
+          <a
+            href={`/${locale}`}
+            className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+          >
+            ← {dict.archive.back}
+          </a>
+          <h1 className="text-title mt-6 text-ink">{dict.archive.heading}</h1>
+          <p className="text-desc mt-4 max-w-[520px] text-muted">{dict.archive.intro}</p>
+        </Reveal>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          {dict.projects.items.map((project, index) => (
+            <Reveal key={project.title} delay={(index % 2) * 0.1} className="h-full">
+              <article className="flex h-full flex-col overflow-hidden rounded-[6px] bg-btn/60 transition-all duration-200 hover:-translate-y-[3px] hover:bg-btn">
+                <a href={project.links.live.href} target="_blank" rel="noreferrer" className="block">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    width={1280}
+                    height={800}
+                    className="w-full"
+                  />
+                </a>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h2 className="text-[24px] font-bold text-ink">{project.title}</h2>
+                    <span className="text-[13px] text-muted">{project.year}</span>
+                  </div>
+                  <p className="mt-2 text-[16px] leading-relaxed text-muted">{project.tagline}</p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {project.tech.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full bg-tag-bg px-3 py-1 text-[12px] font-medium text-tag-text"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto flex items-center gap-4 pt-6">
+                    <a
+                      href={project.links.live.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-white px-5 py-2.5 text-[14px] font-bold text-ink transition-colors hover:bg-btn-hover"
+                    >
+                      {project.links.live.label}
+                    </a>
+                    <a
+                      href={project.links.github.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[14px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+                    >
+                      {dict.projects.githubLabel}
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

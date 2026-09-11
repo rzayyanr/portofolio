@@ -2,6 +2,26 @@ type MarkProps = {
   className?: string;
 };
 
+export function OvalMark({ className }: MarkProps) {
+  return (
+    <svg
+      viewBox="0 0 400 90"
+      fill="none"
+      aria-hidden="true"
+      preserveAspectRatio="none"
+      className={className}
+    >
+      <path
+        d="M14 52 C10 26 96 8 208 10 C310 12 388 26 386 48 C384 70 300 84 186 82 C88 80 18 68 16 48 C14 32 74 20 150 16"
+        stroke="#A4DCFE"
+        strokeWidth={4}
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
+
 export function SquiggleMark({ className }: MarkProps) {
   return (
     <svg

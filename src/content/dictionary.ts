@@ -2,6 +2,20 @@ export const locales = ["id", "en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "id";
 
+/** Slug halaman yang berbeda per bahasa (keputusan: /id/proyek + /en/projects). */
+export const localizedSlugs = {
+  id: { archive: "proyek", catalog: "design-system" },
+  en: { archive: "projects", catalog: "design-system" },
+} as const;
+
+export function archivePath(locale: Locale): string {
+  return `/${locale}/${localizedSlugs[locale].archive}`;
+}
+
+export function catalogPath(locale: Locale): string {
+  return `/${locale}/${localizedSlugs[locale].catalog}`;
+}
+
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
@@ -15,6 +29,7 @@ export const dictionary = {
     },
     nav: {
       name: "Zayyan Rizka",
+      projects: "Proyek",
       toLang: "EN",
       toLangAria: "Beralih ke bahasa Inggris",
       githubAria: "GitHub Zayyan Rizka",
@@ -44,6 +59,7 @@ export const dictionary = {
     },
     projects: {
       heading: "Proyek Pilihan",
+      allButton: "Lihat semua proyek",
       liveLabel: "Kunjungi Website",
       codelabLabel: "Coba Aplikasi",
       githubLabel: "GitHub",
@@ -51,6 +67,9 @@ export const dictionary = {
       items: [
         {
           title: "PKM UPNVJ",
+          tagline: "Portal informasi PKM kampus dengan panel admin tanpa koding",
+          year: "2026",
+          featured: true,
           description:
             "Website pusat informasi Program Kreativitas Mahasiswa untuk UPN Veteran Jakarta: panduan 10 bidang, alur pendaftaran, tema 2026, tips proposal, dan unduhan panduan resmi. Panel admin ber-autentikasi Google memungkinkan pengelola memperbarui pengumuman dan agenda tanpa menyentuh kode.",
           role: "Peran — riset kebutuhan, PRD, design system, pengembangan, deploy, hingga runbook serah terima; semua dikerjakan sendiri dari nol.",
@@ -70,6 +89,9 @@ export const dictionary = {
         },
         {
           title: "CapSL",
+          tagline: "Belajar SIBI dengan koreksi gestur real-time di kamera",
+          year: "2026",
+          featured: true,
           description:
             "Aplikasi web belajar Bahasa Isyarat Indonesia (SIBI) dengan pengenalan gestur real-time lewat kamera: MediaPipe melacak 21 titik tangan, model MLP yang saya latih menilai pose — lengkap dengan umpan balik korektif, kuis hafalan, dan gamifikasi XP & streak. Semua berjalan di browser, tanpa server.",
           role: "Peran — satu-satunya developer di tim dua orang, dari pipeline dataset & pelatihan model hingga produk akhir.",
@@ -88,6 +110,52 @@ export const dictionary = {
           imageAlt: "Tangkapan layar aplikasi CapSL dengan latihan isyarat lewat kamera",
         },
       ] as ProjectItem[],
+    },
+    archive: {
+      heading: "Semua Proyek",
+      intro: "Seluruh proyek yang pernah saya bangun — dari yang unggulan sampai eksperimen kecil.",
+      back: "Kembali ke beranda",
+    },
+    catalog: {
+      heading: "Katalog Design System",
+      intro: "Warna, tipografi, dan komponen yang membangun situs ini — dokumentasi visual untuk diriku sendiri.",
+      back: "Kembali ke beranda",
+      labels: {
+        colors: "Warna",
+        typography: "Tipografi",
+        buttons: "Tombol & Tautan",
+        scribbles: "Coretan Tangan",
+        components: "Komponen",
+      },
+      colors: [
+        { hex: "#131313", name: "Ink", role: "Judul & teks utama" },
+        { hex: "#5a6065", name: "Body", role: "Paragraf hero & tautan" },
+        { hex: "#69737c", name: "Muted", role: "Deskripsi proyek & About" },
+        { hex: "#1e8bf1", name: "Accent", role: "Aksen dekoratif & hover" },
+        { hex: "#005bb1", name: "Accent Dark", role: "Tautan teks (kontras AA)" },
+        { hex: "#a4dcfe", name: "Scribble Blue", role: "Coretan oval kata kunci" },
+        { hex: "#ff9595", name: "Scribble Red", role: "Garis coret frasa" },
+        { hex: "#7cdfcd", name: "Scribble Teal", role: "Anotasi doodle" },
+        { hex: "#edf2f5", name: "Button", role: "Latar tombol pill & kartu" },
+      ],
+      typography: [
+        { label: "Hero — 26–38px, semi-bold", className: "text-hero", text: "Membangun produk web" },
+        { label: "Judul — 28–34px, bold", className: "text-title", text: "Proyek Pilihan" },
+        { label: "Deskripsi — 18–20px", className: "text-desc", text: "Dua produk saya sudah hidup dan dipakai orang." },
+      ],
+      fontNote: "Public Sans — bobot 400/500/600/700 (Google Fonts, lisensi OFL)",
+      components: [
+        { name: "Navbar", path: "src/components/Navbar.tsx", role: "Nama + ikon sosial + toggle bahasa" },
+        { name: "Hero", path: "src/components/Hero.tsx", role: "Kalimat pembuka + coretan + CTA" },
+        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Foto + oval backdrop + doodle" },
+        { name: "Projects", path: "src/components/Projects.tsx", role: "Kartu proyek unggulan berselang-seling" },
+        { name: "About", path: "src/components/About.tsx", role: "Cerita, cara kerja, kegiatan, skill" },
+        { name: "Contact", path: "src/components/Contact.tsx", role: "CTA email + tautan sosial" },
+        { name: "Footer", path: "src/components/Footer.tsx", role: "Kredit + hak cipta" },
+        { name: "Reveal", path: "src/components/Reveal.tsx", role: "Animasi muncul saat scroll" },
+        { name: "scribbles", path: "src/components/scribbles.tsx", role: "OvalMark, SquiggleMark, TealDoodle" },
+        { name: "Archive", path: "src/components/Archive.tsx", role: "Grid kartu Arsip Proyek" },
+      ],
     },
     about: {
       heading: "Tentang Saya",
@@ -128,6 +196,7 @@ export const dictionary = {
     },
     nav: {
       name: "Zayyan Rizka",
+      projects: "Projects",
       toLang: "ID",
       toLangAria: "Switch to Indonesian",
       githubAria: "Zayyan Rizka on GitHub",
@@ -157,6 +226,7 @@ export const dictionary = {
     },
     projects: {
       heading: "Selected Projects",
+      allButton: "View all projects",
       liveLabel: "Visit Website",
       codelabLabel: "Try the App",
       githubLabel: "GitHub",
@@ -164,6 +234,9 @@ export const dictionary = {
       items: [
         {
           title: "PKM UPNVJ",
+          tagline: "The campus PKM information hub with a no-code admin panel",
+          year: "2026",
+          featured: true,
           description:
             "A centralized PKM information website for UPN Veteran Jakarta: guides for all 10 fields, the application flow, 2026 themes, proposal tips, and official downloads. A Google-authenticated admin panel lets staff update announcements and schedules without touching any code.",
           role: "Role — requirements research, PRD, design system, development, deployment, and handover runbook; done solo from zero.",
@@ -183,6 +256,9 @@ export const dictionary = {
         },
         {
           title: "CapSL",
+          tagline: "Learn SIBI with real-time camera gesture feedback",
+          year: "2026",
+          featured: true,
           description:
             "A web app for learning Indonesian Sign Language (SIBI) with real-time camera gesture recognition: MediaPipe tracks 21 hand landmarks and an MLP model I trained scores poses — with corrective feedback, memory quizzes, and XP & streak gamification. Everything runs in the browser, no server needed.",
           role: "Role — the sole developer in a two-person team, from the dataset pipeline & model training to the final product.",
@@ -201,6 +277,52 @@ export const dictionary = {
           imageAlt: "Screenshot of CapSL practicing sign language with the camera",
         },
       ] as ProjectItem[],
+    },
+    archive: {
+      heading: "All Projects",
+      intro: "Everything I've built — from featured work to small experiments.",
+      back: "Back to home",
+    },
+    catalog: {
+      heading: "Design System Catalog",
+      intro: "The colors, typography, and components powering this site — a visual documentation for myself.",
+      back: "Back to home",
+      labels: {
+        colors: "Colors",
+        typography: "Typography",
+        buttons: "Buttons & Links",
+        scribbles: "Hand-drawn Scribbles",
+        components: "Components",
+      },
+      colors: [
+        { hex: "#131313", name: "Ink", role: "Headings & primary text" },
+        { hex: "#5a6065", name: "Body", role: "Hero paragraphs & links" },
+        { hex: "#69737c", name: "Muted", role: "Project & about text" },
+        { hex: "#1e8bf1", name: "Accent", role: "Decorative accent & hover" },
+        { hex: "#005bb1", name: "Accent Dark", role: "Text links (AA contrast)" },
+        { hex: "#a4dcfe", name: "Scribble Blue", role: "Oval keyword highlight" },
+        { hex: "#ff9595", name: "Scribble Red", role: "Phrase underline" },
+        { hex: "#7cdfcd", name: "Scribble Teal", role: "Doodle annotation" },
+        { hex: "#edf2f5", name: "Button", role: "Pill buttons & card background" },
+      ],
+      typography: [
+        { label: "Hero — 26–38px, semi-bold", className: "text-hero", text: "Building web products" },
+        { label: "Title — 28–34px, bold", className: "text-title", text: "Selected Projects" },
+        { label: "Description — 18–20px", className: "text-desc", text: "Two of my products are live and in use." },
+      ],
+      fontNote: "Public Sans — weights 400/500/600/700 (Google Fonts, OFL license)",
+      components: [
+        { name: "Navbar", path: "src/components/Navbar.tsx", role: "Name + social icons + language toggle" },
+        { name: "Hero", path: "src/components/Hero.tsx", role: "Opening line + scribbles + CTA" },
+        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Photo + oval backdrop + doodles" },
+        { name: "Projects", path: "src/components/Projects.tsx", role: "Alternating featured project cards" },
+        { name: "About", path: "src/components/About.tsx", role: "Story, process, activities, skills" },
+        { name: "Contact", path: "src/components/Contact.tsx", role: "Email CTA + social links" },
+        { name: "Footer", path: "src/components/Footer.tsx", role: "Credit + copyright" },
+        { name: "Reveal", path: "src/components/Reveal.tsx", role: "Scroll-in animation" },
+        { name: "scribbles", path: "src/components/scribbles.tsx", role: "OvalMark, SquiggleMark, TealDoodle" },
+        { name: "Archive", path: "src/components/Archive.tsx", role: "Project archive card grid" },
+      ],
     },
     about: {
       heading: "About Me",
@@ -237,6 +359,9 @@ export const dictionary = {
 
 export type ProjectItem = {
   title: string;
+  tagline: string;
+  year: string;
+  featured: boolean;
   description: string;
   role: string;
   stats: { value: string; label: string }[];

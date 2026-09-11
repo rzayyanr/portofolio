@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { getDictionary, type Locale, type ProjectItem } from "@/content/dictionary";
+import {
+  archivePath,
+  getDictionary,
+  type Locale,
+  type ProjectItem,
+} from "@/content/dictionary";
 import Reveal from "./Reveal";
 
 type CardProps = {
@@ -98,10 +103,20 @@ export default function Projects({ locale }: { locale: Locale }) {
           <h2 className="text-title text-ink">{dict.projects.heading}</h2>
         </Reveal>
         <div className="mt-16 flex flex-col gap-y-[100px] lg:mt-[150px] lg:gap-y-[150px]">
-          {dict.projects.items.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} locale={locale} />
-          ))}
+          {dict.projects.items
+            .filter((project) => project.featured)
+            .map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} locale={locale} />
+            ))}
         </div>
+        <Reveal className="mt-16 flex justify-center lg:mt-[100px]">
+          <a
+            href={archivePath(locale)}
+            className="rounded-full bg-btn px-7 py-3.5 text-[17px] font-bold text-ink transition-colors hover:bg-btn-hover"
+          >
+            {dict.projects.allButton} →
+          </a>
+        </Reveal>
       </div>
     </section>
   );
