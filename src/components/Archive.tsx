@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getDictionary, type Locale } from "@/content/dictionary";
+import { casePath } from "@/content/cases";
 import { SquiggleMark } from "./scribbles";
 import Reveal from "./Reveal";
 
@@ -62,9 +63,15 @@ export default function Archive({ locale }: { locale: Locale }) {
                       href={project.links.live.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full bg-btn px-5 py-2.5 text-[14px] font-bold text-ink transition-colors hover:bg-btn-hover"
+                      className="rounded-full bg-white px-5 py-2.5 text-[14px] font-bold text-ink transition-colors hover:bg-btn-hover"
                     >
                       {project.links.live.label}
+                    </a>
+                    <a
+                      href={casePath(locale, project.caseSlug)}
+                      className="text-[14px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+                    >
+                      {dict.projects.caseLabel}
                     </a>
                     <a
                       href={project.links.github.href}

@@ -5,6 +5,7 @@ import {
   type Locale,
   type ProjectItem,
 } from "@/content/dictionary";
+import { casePath } from "@/content/cases";
 import Reveal from "./Reveal";
 
 type CardProps = {
@@ -77,6 +78,12 @@ function ProjectCard({ project, index, locale }: CardProps) {
             className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
           >
             {dict.projects.githubLabel}
+          </a>
+          <a
+            href={casePath(locale, project.caseSlug)}
+            className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+          >
+            {dict.projects.caseLabel}
           </a>
           {project.links.docs && (
             <a

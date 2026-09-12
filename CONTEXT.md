@@ -20,3 +20,7 @@ _Avoid_: style guide, showcase
 Peran kerja, prestasi, atau afiliasi tanpa tautan publik (Skalar Solution, Pronuts, GENBI, KSM Multimedia); hidup di section Tentang.
 _Avoid_: riwayat hidup, track record
 _Note_: Arsip Proyek hanya menerima Proyek (karya digital dengan tautan); Pengalaman tidak pernah masuk Arsip.
+
+**Studi Kasus**:
+Halaman cerita mendalam per Proyek (latar belakang, proses, hasil, pelajaran) pada `/id/proyek/[slug-kasus]`; pintu masuknya dari kartu proyek.
+_Avoid_: halaman detail, blog post

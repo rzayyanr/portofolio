@@ -62,6 +62,7 @@ export const dictionary = {
     projects: {
       heading: "Proyek Pilihan",
       allButton: "Lihat semua proyek",
+      caseLabel: "Studi Kasus",
       liveLabel: "Kunjungi Website",
       codelabLabel: "Coba Aplikasi",
       githubLabel: "GitHub",
@@ -72,6 +73,7 @@ export const dictionary = {
           tagline: "Portal informasi PKM kampus dengan panel admin tanpa koding",
           year: "2026",
           featured: true,
+          caseSlug: "pkm-upnvj",
           description:
             "Website pusat informasi Program Kreativitas Mahasiswa untuk UPN Veteran Jakarta: panduan 10 bidang, alur pendaftaran, tema 2026, tips proposal, dan unduhan panduan resmi. Panel admin ber-autentikasi Google memungkinkan pengelola memperbarui pengumuman dan agenda tanpa menyentuh kode.",
           role: "Peran: riset kebutuhan, PRD, design system, pengembangan, deploy, hingga runbook serah terima; semua dikerjakan sendiri dari nol.",
@@ -94,6 +96,7 @@ export const dictionary = {
           tagline: "Belajar SIBI dengan koreksi gestur real-time di kamera",
           year: "2026",
           featured: true,
+          caseSlug: "capsl",
           description:
             "Aplikasi web belajar Bahasa Isyarat Indonesia (SIBI) dengan pengenalan gestur real-time lewat kamera: MediaPipe melacak 21 titik tangan, model MLP yang saya latih menilai pose, lengkap dengan umpan balik korektif, kuis hafalan, dan gamifikasi XP & streak. Semua berjalan di browser, tanpa server.",
           role: "Peran: satu-satunya developer di tim dua orang, dari pipeline dataset & pelatihan model hingga produk akhir.",
@@ -116,6 +119,14 @@ export const dictionary = {
     archive: {
       heading: "Semua Proyek",
       intro: "Seluruh proyek yang pernah saya bangun, dari yang unggulan sampai eksperimen kecil.",
+      back: "Kembali ke beranda",
+    },
+    case: {
+      next: "Proyek berikutnya",
+    },
+    notFound: {
+      title: "Halaman tidak ditemukan",
+      text: "Alamat yang kamu tuju tidak ada atau sudah dipindahkan.",
       back: "Kembali ke beranda",
     },
     catalog: {
@@ -197,7 +208,7 @@ export const dictionary = {
     contact: {
       pre: "Punya ide, lowongan magang, atau sekadar ingin menyapa? ",
       link: "Kirim saya email",
-      email: "mailto:rzayyanrizka@gmail.com",
+      email: "mailto:rzayyanrizka@gmail.com?subject=Halo%20dari%20portofolio",
       githubLabel: "GitHub",
       linkedinLabel: "LinkedIn",
       instagramLabel: "Instagram",
@@ -245,6 +256,7 @@ export const dictionary = {
     projects: {
       heading: "Selected Projects",
       allButton: "View all projects",
+      caseLabel: "Case Study",
       liveLabel: "Visit Website",
       codelabLabel: "Try the App",
       githubLabel: "GitHub",
@@ -255,6 +267,7 @@ export const dictionary = {
           tagline: "The campus PKM information hub with a no-code admin panel",
           year: "2026",
           featured: true,
+          caseSlug: "pkm-upnvj",
           description:
             "A centralized PKM information website for UPN Veteran Jakarta: guides for all 10 fields, the application flow, 2026 themes, proposal tips, and official downloads. A Google-authenticated admin panel lets staff update announcements and schedules without touching any code.",
           role: "Role: requirements research, PRD, design system, development, deployment, and handover runbook; done solo from zero.",
@@ -277,6 +290,7 @@ export const dictionary = {
           tagline: "Learn SIBI with real-time camera gesture feedback",
           year: "2026",
           featured: true,
+          caseSlug: "capsl",
           description:
             "A web app for learning Indonesian Sign Language (SIBI) with real-time camera gesture recognition: MediaPipe tracks 21 hand landmarks and an MLP model I trained scores poses, with corrective feedback, memory quizzes, and XP & streak gamification. Everything runs in the browser, no server needed.",
           role: "Role: the sole developer in a two-person team, from the dataset pipeline & model training to the final product.",
@@ -299,6 +313,14 @@ export const dictionary = {
     archive: {
       heading: "All Projects",
       intro: "Everything I've built, from featured work to small experiments.",
+      back: "Back to home",
+    },
+    case: {
+      next: "Next project",
+    },
+    notFound: {
+      title: "Page not found",
+      text: "The address you're looking for doesn't exist or has moved.",
       back: "Back to home",
     },
     catalog: {
@@ -380,7 +402,7 @@ export const dictionary = {
     contact: {
       pre: "Have an idea, an internship opening, or just want to say hi? ",
       link: "Send me an email",
-      email: "mailto:rzayyanrizka@gmail.com",
+      email: "mailto:rzayyanrizka@gmail.com?subject=Hi%20from%20your%20portfolio",
       githubLabel: "GitHub",
       linkedinLabel: "LinkedIn",
       instagramLabel: "Instagram",
@@ -394,6 +416,7 @@ export type ProjectItem = {
   tagline: string;
   year: string;
   featured: boolean;
+  caseSlug: string;
   description: string;
   role: string;
   stats: { value: string; label: string }[];

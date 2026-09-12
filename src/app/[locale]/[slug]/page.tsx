@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import {
   getDictionary,
   isLocale,
@@ -11,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Archive from "@/components/Archive";
 import Catalog from "@/components/Catalog";
+import NotFound from "@/components/NotFound";
 
 type Kind = "archive" | "catalog";
 
@@ -60,18 +60,24 @@ export default async function SlugPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (!isLocale(locale)) {
-    notFound();
-  }
-  const kind = resolveKind(locale, slug);
+  const valid: Locale = isLocale(locale) ? locale : "id";
+  const kind = resolveKind(valid, slug);
   if (!kind) {
-    notFound();
+    return (
+      <>
+        <Navbar locale={valid} />
+        <main>
+          <NotFound locale={valid} />
+        </main>
+        <Footer locale={valid} />
+      </>
+    );
   }
   return (
     <>
-      <Navbar locale={locale} activePage={kind === "archive" ? "archive" : undefined} />
-      <main>{kind === "archive" ? <Archive locale={locale} /> : <Catalog locale={locale} />}</main>
-      <Footer locale={locale} />
+      <Navbar locale={valid} activePage={kind === "archive" ? "archive" : undefined} />
+      <main>{kind === "archive" ? <Archive locale={valid} /> : <Catalog locale={valid} />}</main>
+      <Footer locale={valid} />
     </>
   );
 }
