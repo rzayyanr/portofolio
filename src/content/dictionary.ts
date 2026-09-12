@@ -23,9 +23,9 @@ export function isLocale(value: string): value is Locale {
 export const dictionary = {
   id: {
     meta: {
-      title: "Zayyan Rizka — Frontend Engineer & Mahasiswa Sistem Informasi",
+      title: "Zayyan Rizka | Frontend Engineer & Mahasiswa Sistem Informasi",
       description:
-        "Frontend engineer & mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna — portal PKM kampus & aplikasi belajar bahasa isyarat.",
+        "Frontend engineer & mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna: portal PKM kampus & aplikasi belajar bahasa isyarat.",
     },
     nav: {
       name: "Zayyan Rizka",
@@ -45,9 +45,9 @@ export const dictionary = {
         underlined: "produk web yang rapi dan berguna.",
       },
       paragraphLead:
-        "Dua produk saya sudah hidup dan dipakai: portal informasi PKM untuk kampus, dan aplikasi belajar Bahasa Isyarat dengan pengenalan gestur real-time. Di sela kuliah, saya bekerja sebagai frontend engineer di Skalar Solution.",
+        "Saya bekerja sebagai frontend engineer di Skalar Solution dengan penugasan berbasis proyek. Di luar itu saya memimpin Pronuts, rintisan startup kuliner yang lahir dari program kreativitas mahasiswa, dan aktif sebagai awardee Beasiswa Bank Indonesia lewat GENBI Jakarta.",
       paragraphLinks: {
-        pre: " Lihat selengkapnya di ",
+        pre: " Lebih banyak cerita di ",
         github: "GitHub",
         mid: " dan ",
         linkedin: "LinkedIn",
@@ -74,7 +74,7 @@ export const dictionary = {
           featured: true,
           description:
             "Website pusat informasi Program Kreativitas Mahasiswa untuk UPN Veteran Jakarta: panduan 10 bidang, alur pendaftaran, tema 2026, tips proposal, dan unduhan panduan resmi. Panel admin ber-autentikasi Google memungkinkan pengelola memperbarui pengumuman dan agenda tanpa menyentuh kode.",
-          role: "Peran — riset kebutuhan, PRD, design system, pengembangan, deploy, hingga runbook serah terima; semua dikerjakan sendiri dari nol.",
+          role: "Peran: riset kebutuhan, PRD, design system, pengembangan, deploy, hingga runbook serah terima; semua dikerjakan sendiri dari nol.",
           stats: [
             { value: "10", label: "bidang PKM terstruktur" },
             { value: "11", label: "panduan resmi diolah" },
@@ -95,12 +95,12 @@ export const dictionary = {
           year: "2026",
           featured: true,
           description:
-            "Aplikasi web belajar Bahasa Isyarat Indonesia (SIBI) dengan pengenalan gestur real-time lewat kamera: MediaPipe melacak 21 titik tangan, model MLP yang saya latih menilai pose — lengkap dengan umpan balik korektif, kuis hafalan, dan gamifikasi XP & streak. Semua berjalan di browser, tanpa server.",
-          role: "Peran — satu-satunya developer di tim dua orang, dari pipeline dataset & pelatihan model hingga produk akhir.",
+            "Aplikasi web belajar Bahasa Isyarat Indonesia (SIBI) dengan pengenalan gestur real-time lewat kamera: MediaPipe melacak 21 titik tangan, model MLP yang saya latih menilai pose, lengkap dengan umpan balik korektif, kuis hafalan, dan gamifikasi XP & streak. Semua berjalan di browser, tanpa server.",
+          role: "Peran: satu-satunya developer di tim dua orang, dari pipeline dataset & pelatihan model hingga produk akhir.",
           stats: [
             { value: "89,9%", label: "akurasi model" },
             { value: "24", label: "huruf SIBI" },
-            { value: "0", label: "server — murni browser" },
+            { value: "0", label: "server, murni browser" },
           ],
           tech: ["React", "Vite", "MediaPipe", "Python", "scikit-learn"],
           links: {
@@ -115,13 +115,13 @@ export const dictionary = {
     },
     archive: {
       heading: "Semua Proyek",
-      intro: "Seluruh proyek yang pernah saya bangun — dari yang unggulan sampai eksperimen kecil.",
+      intro: "Seluruh proyek yang pernah saya bangun, dari yang unggulan sampai eksperimen kecil.",
       back: "Kembali ke beranda",
     },
     catalog: {
       heading: "Katalog Design System",
       short: "Design System",
-      intro: "Warna, tipografi, dan komponen yang membangun situs ini — dokumentasi visual untuk diriku sendiri.",
+      intro: "Warna, tipografi, dan komponen yang membangun situs ini: dokumentasi visual untuk diriku sendiri.",
       back: "Kembali ke beranda",
       labels: {
         colors: "Warna",
@@ -142,11 +142,11 @@ export const dictionary = {
         { hex: "#edf2f5", name: "Button", role: "Latar tombol pill & kartu" },
       ],
       typography: [
-        { label: "Hero — 26–38px, semi-bold", className: "text-hero", text: "Membangun produk web" },
-        { label: "Judul — 28–34px, bold", className: "text-title", text: "Proyek Pilihan" },
-        { label: "Deskripsi — 18–20px", className: "text-desc", text: "Dua produk saya sudah hidup dan dipakai orang." },
+        { label: "Hero (26-38px, semi-bold)", className: "text-hero", text: "Membangun produk web" },
+        { label: "Judul (28-34px, bold)", className: "text-title", text: "Proyek Pilihan" },
+        { label: "Deskripsi (18-20px)", className: "text-desc", text: "Dua produk saya sudah hidup dan dipakai orang." },
       ],
-      fontNote: "Public Sans — bobot 400/500/600/700 (Google Fonts, lisensi OFL)",
+      fontNote: "Public Sans, bobot 400/500/600/700 (Google Fonts, lisensi OFL)",
       components: [
         { name: "Navbar", path: "src/components/Navbar.tsx", role: "Nama + ikon sosial + toggle bahasa" },
         { name: "Hero", path: "src/components/Hero.tsx", role: "Kalimat pembuka + coretan + CTA" },
@@ -163,28 +163,28 @@ export const dictionary = {
     about: {
       heading: "Tentang Saya",
       story: [
-        "Saya Zayyan, mahasiswa Sistem Informasi semester 5 (IPK 3,82) di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang — bukan sekadar tugas yang selesai.",
+        "Saya Zayyan, mahasiswa Sistem Informasi semester 5 (IPK 3,82) di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang, bukan sekadar tugas yang selesai.",
         "Kalau tidak di depan layar, saya biasanya main gitar atau menumpuk komik yang belum selesai dibaca.",
       ],
       howTitle: "Cara saya kerja",
-      how: "Riset dulu, tulis PRD, catat keputusan penting sebagai ADR, bangun, lalu serahkan dengan dokumentasi rapi — supaya apa pun yang saya buat bisa dilanjutkan orang lain.",
+      how: "Riset dulu, tulis PRD, catat keputusan penting sebagai ADR, bangun, lalu serahkan dengan dokumentasi rapi, supaya apa pun yang saya buat bisa dilanjutkan orang lain.",
       activitiesTitle: "Pengalaman & Kegiatan",
       activities: [
         {
-          name: "Frontend Engineer — Skalar Solution",
-          note: "2026–sekarang · implementasi UI, menjaga design system, integrasi API",
+          name: "Frontend Engineer di Skalar Solution",
+          note: "2026 - sekarang · berbasis proyek: implementasi UI, menjaga design system, integrasi API",
         },
         {
-          name: "CEO & Co-Founder — Pronuts",
-          note: "2026–sekarang · startup donat protein tinggi — Juara 2 UNEX 2026 tingkat nasional",
+          name: "CEO & Co-Founder Pronuts",
+          note: "2026 - sekarang · startup donat protein tinggi berawal dari proposal Program Kreativitas Mahasiswa, Juara 2 UNEX 2026 tingkat nasional",
         },
         {
-          name: "Beasiswa Bank Indonesia — GENBI Jakarta",
+          name: "Beasiswa Bank Indonesia, GENBI Jakarta",
           note: "Penerima beasiswa & anggota aktif GENBI Jakarta",
         },
         {
-          name: "KSM Multimedia — UPNVJ",
-          note: "Staf Divisi Humas — komunikasi & kemitraan",
+          name: "KSM Multimedia, UPNVJ",
+          note: "Staf Divisi Humas, komunikasi & kemitraan",
         },
       ],
       skillsTitle: "Perkakas yang biasa saya pakai",
@@ -198,13 +198,13 @@ export const dictionary = {
       linkedinLabel: "LinkedIn",
       instagramLabel: "Instagram",
     },
-    footer: "© 2026 Zayyan Rizka — dirancang & dikode sendiri.",
+    footer: "© 2026 Zayyan Rizka, dirancang & dikode sendiri.",
   },
   en: {
     meta: {
-      title: "Zayyan Rizka — Frontend Engineer & Information Systems Student",
+      title: "Zayyan Rizka | Frontend Engineer & Information Systems Student",
       description:
-        "A frontend engineer & Information Systems student at UPN Veteran Jakarta who builds clean and useful web products — a campus PKM portal & a sign-language learning app.",
+        "A frontend engineer & Information Systems student at UPN Veteran Jakarta who builds clean and useful web products: a campus PKM portal & a sign-language learning app.",
     },
     nav: {
       name: "Zayyan Rizka",
@@ -224,14 +224,14 @@ export const dictionary = {
         underlined: "clean and useful web products.",
       },
       paragraphLead:
-        "Two of my products are live and in use: a campus PKM information portal, and a sign-language learning app with real-time gesture recognition. Between classes, I work as a frontend engineer at Skalar Solution.",
+        "I work as a frontend engineer at Skalar Solution on a project basis. Beyond that, I lead Pronuts, a culinary startup incubated through a student creativity program, and stay active as a Bank Indonesia Scholarship awardee through GENBI Jakarta.",
       paragraphLinks: {
-        pre: " See more on ",
+        pre: " More of my story on ",
         github: "GitHub",
         mid: " and ",
         linkedin: "LinkedIn",
         mid2: ", or just ",
-        email: "send an email",
+        email: "send me an email",
         post: " saying hi.",
       },
       ctaProjects: "View Projects",
@@ -253,7 +253,7 @@ export const dictionary = {
           featured: true,
           description:
             "A centralized PKM information website for UPN Veteran Jakarta: guides for all 10 fields, the application flow, 2026 themes, proposal tips, and official downloads. A Google-authenticated admin panel lets staff update announcements and schedules without touching any code.",
-          role: "Role — requirements research, PRD, design system, development, deployment, and handover runbook; done solo from zero.",
+          role: "Role: requirements research, PRD, design system, development, deployment, and handover runbook; done solo from zero.",
           stats: [
             { value: "10", label: "PKM fields structured" },
             { value: "11", label: "official guides processed" },
@@ -274,12 +274,12 @@ export const dictionary = {
           year: "2026",
           featured: true,
           description:
-            "A web app for learning Indonesian Sign Language (SIBI) with real-time camera gesture recognition: MediaPipe tracks 21 hand landmarks and an MLP model I trained scores poses — with corrective feedback, memory quizzes, and XP & streak gamification. Everything runs in the browser, no server needed.",
-          role: "Role — the sole developer in a two-person team, from the dataset pipeline & model training to the final product.",
+            "A web app for learning Indonesian Sign Language (SIBI) with real-time camera gesture recognition: MediaPipe tracks 21 hand landmarks and an MLP model I trained scores poses, with corrective feedback, memory quizzes, and XP & streak gamification. Everything runs in the browser, no server needed.",
+          role: "Role: the sole developer in a two-person team, from the dataset pipeline & model training to the final product.",
           stats: [
             { value: "89.9%", label: "model accuracy" },
             { value: "24", label: "SIBI letters" },
-            { value: "0", label: "servers — fully in-browser" },
+            { value: "0", label: "servers, fully in-browser" },
           ],
           tech: ["React", "Vite", "MediaPipe", "Python", "scikit-learn"],
           links: {
@@ -294,13 +294,13 @@ export const dictionary = {
     },
     archive: {
       heading: "All Projects",
-      intro: "Everything I've built — from featured work to small experiments.",
+      intro: "Everything I've built, from featured work to small experiments.",
       back: "Back to home",
     },
     catalog: {
       heading: "Design System Catalog",
       short: "Design System",
-      intro: "The colors, typography, and components powering this site — a visual documentation for myself.",
+      intro: "The colors, typography, and components powering this site: a visual documentation for myself.",
       back: "Back to home",
       labels: {
         colors: "Colors",
@@ -321,11 +321,11 @@ export const dictionary = {
         { hex: "#edf2f5", name: "Button", role: "Pill buttons & card background" },
       ],
       typography: [
-        { label: "Hero — 26–38px, semi-bold", className: "text-hero", text: "Building web products" },
-        { label: "Title — 28–34px, bold", className: "text-title", text: "Selected Projects" },
-        { label: "Description — 18–20px", className: "text-desc", text: "Two of my products are live and in use." },
+        { label: "Hero (26-38px, semi-bold)", className: "text-hero", text: "Building web products" },
+        { label: "Title (28-34px, bold)", className: "text-title", text: "Selected Projects" },
+        { label: "Description (18-20px)", className: "text-desc", text: "Two of my products are live and in use." },
       ],
-      fontNote: "Public Sans — weights 400/500/600/700 (Google Fonts, OFL license)",
+      fontNote: "Public Sans, weights 400/500/600/700 (Google Fonts, OFL license)",
       components: [
         { name: "Navbar", path: "src/components/Navbar.tsx", role: "Name + social icons + language toggle" },
         { name: "Hero", path: "src/components/Hero.tsx", role: "Opening line + scribbles + CTA" },
@@ -342,28 +342,28 @@ export const dictionary = {
     about: {
       heading: "About Me",
       story: [
-        "I'm Zayyan, a 5th-semester Information Systems student (GPA 3.82) at UPN Veteran Jakarta. I like building things people actually use — not just assignments that get done.",
+        "I'm Zayyan, a 5th-semester Information Systems student (GPA 3.82) at UPN Veteran Jakarta. I like building things people actually use, not just assignments that get done.",
         "When I'm not in front of a screen, I'm usually playing guitar or stacking up comics I haven't finished reading.",
       ],
       howTitle: "How I work",
-      how: "Research first, write the PRD, log key decisions as ADRs, build, then hand over with clean documentation — so anything I make can be continued by someone else.",
+      how: "Research first, write the PRD, log key decisions as ADRs, build, then hand over with clean documentation, so anything I make can be continued by someone else.",
       activitiesTitle: "Experience & Activities",
       activities: [
         {
-          name: "Frontend Engineer — Skalar Solution",
-          note: "2026–present · implementing UI, maintaining the design system, API integration",
+          name: "Frontend Engineer at Skalar Solution",
+          note: "2026 - present · project-based: implementing UI, maintaining the design system, API integration",
         },
         {
-          name: "CEO & Co-Founder — Pronuts",
-          note: "2026–present · high-protein donut startup — 2nd winner of UNEX 2026, national level",
+          name: "CEO & Co-Founder Pronuts",
+          note: "2026 - present · high-protein donut startup incubated through a student creativity program, 2nd winner of UNEX 2026, national level",
         },
         {
-          name: "Bank Indonesia Scholarship — GENBI Jakarta",
+          name: "Bank Indonesia Scholarship, GENBI Jakarta",
           note: "Scholarship recipient & active GENBI Jakarta member",
         },
         {
-          name: "KSM Multimedia — UPNVJ",
-          note: "Public Relations staff — communications & partnerships",
+          name: "KSM Multimedia, UPNVJ",
+          note: "Public Relations staff, communications & partnerships",
         },
       ],
       skillsTitle: "Tools I usually work with",
@@ -377,7 +377,7 @@ export const dictionary = {
       linkedinLabel: "LinkedIn",
       instagramLabel: "Instagram",
     },
-    footer: "© 2026 Zayyan Rizka — designed & coded from scratch.",
+    footer: "© 2026 Zayyan Rizka, designed & coded from scratch.",
   },
 } as const;
 

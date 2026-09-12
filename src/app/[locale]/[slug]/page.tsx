@@ -37,7 +37,7 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
   if (kind === "archive") {
     return {
-      title: `${dict.archive.heading} — Zayyan Rizka`,
+      title: `${dict.archive.heading} | Zayyan Rizka`,
       description: dict.archive.intro,
       alternates: {
         canonical: `/${locale}/${slug}`,
@@ -47,7 +47,7 @@ export async function generateMetadata({
   }
   if (kind === "catalog") {
     return {
-      title: `${dict.catalog.heading} — Zayyan Rizka`,
+      title: `${dict.catalog.heading} | Zayyan Rizka`,
       robots: { index: false },
     };
   }

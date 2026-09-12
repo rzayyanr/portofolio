@@ -5,7 +5,7 @@ type Props = {
   alt: string;
 };
 
-/** Bingkai coretan tangan yang mencong-mencong — stroke biru identitas situs. */
+/** Bingkai coretan tangan yang mencong-mencong, stroke biru identitas situs. */
 function FrameMark() {
   return (
     <svg
