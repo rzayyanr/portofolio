@@ -1,14 +1,35 @@
 import Image from "next/image";
-import { SquiggleMark } from "./scribbles";
 
 type Props = {
   className?: string;
   alt: string;
 };
 
+/** Bingkai coretan tangan yang mencong-mencong — stroke biru identitas situs. */
+function FrameMark() {
+  return (
+    <svg
+      viewBox="0 0 400 480"
+      fill="none"
+      aria-hidden="true"
+      preserveAspectRatio="none"
+      className="absolute -left-[6%] -top-[3%] -z-10 h-[106%] w-[112%]"
+    >
+      <path
+        d="M 22 34 C 70 20 160 13 245 17 C 325 21 380 28 382 58 C 385 118 379 198 383 278 C 386 338 381 408 371 448 C 300 462 178 467 94 459 C 47 454 15 446 17 406 C 21 342 13 242 17 162 C 19 112 15 66 19 36 C 21 26 33 22 47 20"
+        stroke="#A4DCFE"
+        strokeWidth={4}
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
+
 export default function HeroPortrait({ className, alt }: Props) {
   return (
     <div className={`relative mx-auto w-full max-w-[360px] ${className ?? ""}`}>
+      <FrameMark />
       <svg
         viewBox="0 0 400 90"
         preserveAspectRatio="none"
@@ -33,21 +54,6 @@ export default function HeroPortrait({ className, alt }: Props) {
         priority
         className="relative z-10 mx-auto h-auto w-[50%]"
       />
-      <SquiggleMark className="absolute left-[0%] top-[3%] z-0 h-[14px] w-[86px]" />
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        className="absolute right-[6%] top-[10%] z-0 h-[20px] w-[20px]"
-      >
-        <path d="M12 3 L12 21 M3 12 L21 12" stroke="#7CDFCD" strokeWidth={4} strokeLinecap="round" />
-      </svg>
-      <svg
-        viewBox="0 0 20 20"
-        aria-hidden="true"
-        className="absolute bottom-[10%] left-[2%] z-0 h-[16px] w-[16px]"
-      >
-        <circle cx="10" cy="10" r="7" stroke="#A4DCFE" strokeWidth={4} fill="none" />
-      </svg>
     </div>
   );
 }

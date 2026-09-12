@@ -150,7 +150,7 @@ export const dictionary = {
       components: [
         { name: "Navbar", path: "src/components/Navbar.tsx", role: "Nama + ikon sosial + toggle bahasa" },
         { name: "Hero", path: "src/components/Hero.tsx", role: "Kalimat pembuka + coretan + CTA" },
-        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Foto + oval backdrop + doodle" },
+        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Foto + bingkai coret biru" },
         { name: "Projects", path: "src/components/Projects.tsx", role: "Kartu proyek unggulan berselang-seling" },
         { name: "About", path: "src/components/About.tsx", role: "Cerita, cara kerja, kegiatan, skill" },
         { name: "Contact", path: "src/components/Contact.tsx", role: "CTA email + tautan sosial" },
@@ -329,7 +329,7 @@ export const dictionary = {
       components: [
         { name: "Navbar", path: "src/components/Navbar.tsx", role: "Name + social icons + language toggle" },
         { name: "Hero", path: "src/components/Hero.tsx", role: "Opening line + scribbles + CTA" },
-        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Photo + oval backdrop + doodles" },
+        { name: "HeroPortrait", path: "src/components/HeroPortrait.tsx", role: "Photo + blue scribble frame" },
         { name: "Projects", path: "src/components/Projects.tsx", role: "Alternating featured project cards" },
         { name: "About", path: "src/components/About.tsx", role: "Story, process, activities, skills" },
         { name: "Contact", path: "src/components/Contact.tsx", role: "Email CTA + social links" },
