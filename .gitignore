@@ -33,3 +33,6 @@ next-env.d.ts
 # local
 server.log
 .zcode/
+
+.vercel
+.env*

@@ -23,9 +23,9 @@ export function isLocale(value: string): value is Locale {
 export const dictionary = {
   id: {
     meta: {
-      title: "Zayyan Rizka — Mahasiswa Sistem Informasi",
+      title: "Zayyan Rizka — Frontend Engineer & Mahasiswa Sistem Informasi",
       description:
-        "Mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna — portal PKM kampus & aplikasi belajar bahasa isyarat.",
+        "Frontend engineer & mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna — portal PKM kampus & aplikasi belajar bahasa isyarat.",
     },
     nav: {
       name: "Zayyan Rizka",
@@ -202,9 +202,9 @@ export const dictionary = {
   },
   en: {
     meta: {
-      title: "Zayyan Rizka — Information Systems Student",
+      title: "Zayyan Rizka — Frontend Engineer & Information Systems Student",
       description:
-        "An Information Systems student at UPN Veteran Jakarta who builds clean and useful web products — a campus PKM portal & a sign-language learning app.",
+        "A frontend engineer & Information Systems student at UPN Veteran Jakarta who builds clean and useful web products — a campus PKM portal & a sign-language learning app.",
     },
     nav: {
       name: "Zayyan Rizka",
