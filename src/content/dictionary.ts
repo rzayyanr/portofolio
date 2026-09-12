@@ -171,18 +171,22 @@ export const dictionary = {
       activitiesTitle: "Pengalaman & Kegiatan",
       activities: [
         {
+          icon: "code",
           name: "Frontend Engineer di Skalar Solution",
           note: "2026 - sekarang · berbasis proyek: implementasi UI, menjaga design system, integrasi API",
         },
         {
+          icon: "donut",
           name: "CEO & Co-Founder Pronuts",
           note: "2026 - sekarang · startup donat protein tinggi berawal dari proposal Program Kreativitas Mahasiswa, Juara 2 UNEX 2026 tingkat nasional",
         },
         {
+          icon: "medal",
           name: "Beasiswa Bank Indonesia, GENBI Jakarta",
           note: "Penerima beasiswa & anggota aktif GENBI Jakarta",
         },
         {
+          icon: "megaphone",
           name: "KSM Multimedia, UPNVJ",
           note: "Staf Divisi Humas, komunikasi & kemitraan",
         },
@@ -350,18 +354,22 @@ export const dictionary = {
       activitiesTitle: "Experience & Activities",
       activities: [
         {
+          icon: "code",
           name: "Frontend Engineer at Skalar Solution",
           note: "2026 - present · project-based: implementing UI, maintaining the design system, API integration",
         },
         {
+          icon: "donut",
           name: "CEO & Co-Founder Pronuts",
           note: "2026 - present · high-protein donut startup incubated through a student creativity program, 2nd winner of UNEX 2026, national level",
         },
         {
+          icon: "medal",
           name: "Bank Indonesia Scholarship, GENBI Jakarta",
           note: "Scholarship recipient & active GENBI Jakarta member",
         },
         {
+          icon: "megaphone",
           name: "KSM Multimedia, UPNVJ",
           note: "Public Relations staff, communications & partnerships",
         },
