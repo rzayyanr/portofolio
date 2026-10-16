@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { archivePath, getDictionary, type Locale } from "@/content/dictionary";
-import { casePath, caseStudies, type CaseSlug } from "@/content/cases";
+import { casePath, caseSlugs, caseStudies, type CaseSlug } from "@/content/cases";
 import { OvalMark, SquiggleMark } from "./scribbles";
 import Reveal from "./Reveal";
 
@@ -9,14 +9,26 @@ type Props = {
   caseSlug: CaseSlug;
 };
 
+/**
+ * Potongan tangkapan layar proyek untuk tiap bagian penjelasan. Berkasnya
+ * dinamai mengikuti nomor bagian, jadi mengganti gambar cukup dengan
+ * menaruh berkas baru dengan nama yang sama di folder images.
+ */
+function gambarBagian(caseSlug: CaseSlug, nomor: string): string | null {
+  if (caseSlug === "luma") return `/images/luma-${nomor}.png`;
+  const berkas = caseSlug === "pkm-upnvj" ? "pkm" : "capsl";
+  return `/images/${berkas}-${nomor}.png`;
+}
+
 export default function CaseStudy({ locale, caseSlug }: Props) {
   const dict = getDictionary(locale);
   const c = caseStudies[caseSlug][locale];
-  const nextSlug: CaseSlug = caseSlug === "pkm-upnvj" ? "capsl" : "pkm-upnvj";
+  const currentIndex = caseSlugs.indexOf(caseSlug);
+  const nextSlug = caseSlugs[(currentIndex + 1) % caseSlugs.length];
   const next = caseStudies[nextSlug][locale];
 
   return (
-    <section className="pt-[120px] lg:pt-[180px]">
+    <section className="pt-10 lg:pt-16">
       <div className="container-site">
         <Reveal>
           <p className="text-[14px] text-muted">
@@ -32,7 +44,7 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
           </p>
           <h1 className="text-title mt-6 max-w-[720px] text-ink">
             <span className="relative inline-block">
-              <OvalMark className="absolute -left-[3%] top-[-8%] -z-10 h-[118%] w-[106%]" />
+              <OvalMark className="absolute -left-[20%] top-[-32%] -z-10 h-[160%] w-[140%]" />
               {c.title}
             </span>
           </h1>
@@ -49,99 +61,139 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
           </ul>
         </Reveal>
 
+        {/* Gambar proyek di kiri, kartu statistik di kanan, mengikuti pola di
+            referensi. Di bawah 1280 pixel kolomnya sempit, jadi keduanya
+            ditumpuk ke bawah supaya angkanya tetap terbaca. */}
         <Reveal delay={0.1}>
-          <dl className="mt-12 grid grid-cols-3 gap-6 rounded-[6px] bg-btn/60 p-7">
-            {c.stats.map((stat) => (
-              <div key={stat.label}>
-                <dd className="text-[38px] font-bold leading-none text-ink sm:text-[48px]">
-                  {stat.value}
-                </dd>
-                <dd className="mt-2 text-[13px] text-muted">{stat.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <Image
-            src={c.image}
-            alt={c.imageAlt}
-            width={1280}
-            height={800}
-            priority
-            className="mt-12 w-full rounded-[6px]"
-          />
-        </Reveal>
-
-        {c.sections.map((section) => (
-          <Reveal key={section.number} className="mt-20">
-            <div className="flex items-baseline gap-5">
-              <span className="text-[56px] font-bold leading-none text-scribble-blue/40">
-                {section.number}
-              </span>
-              <h2 className="text-title relative inline-block text-ink">
-                {section.title}
-                <SquiggleMark className="absolute -bottom-[6px] left-0 h-[10px] w-full" />
-              </h2>
-            </div>
-            <div className="mt-7 max-w-[680px] space-y-4">
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)} className="text-desc text-muted">
-                  {paragraph}
-                </p>
+          <div className="mt-12 grid items-start gap-8 xl:grid-cols-[minmax(0,720px)_1fr] xl:gap-10">
+            <Image
+              src={c.image}
+              alt={c.imageAlt}
+              width={1280}
+              height={800}
+              priority
+              className="sticker w-full bg-white [--tilt:-0.3deg]"
+            />
+            <dl className="sticker grid gap-6 bg-btn p-7 [--tilt:0.4deg] sm:grid-cols-3 xl:grid-cols-1">
+              {c.stats.map((stat) => (
+                /* flex-col-reverse: nilai tampil di atas label, urutan DOM tetap dt lalu dd. */
+                <div key={stat.label} className="flex flex-col-reverse">
+                  <dt className="mt-2 text-[13px] text-body">{stat.label}</dt>
+                  <dd className="text-[34px] font-bold leading-none text-ink sm:text-[48px] xl:text-[40px]">
+                    {stat.value}
+                  </dd>
+                </div>
               ))}
-              {section.bullets && (
-                <ul className="space-y-3 pt-2">
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet.slice(0, 24)} className="flex gap-3">
-                      <span
-                        aria-hidden="true"
-                        className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-scribble-blue"
-                      />
-                      <span className="text-desc text-muted">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+            </dl>
+          </div>
+        </Reveal>
+
+        {/* Empat bagian dipisah jadi empat kotak sendiri yang berselang-seling
+            kiri dan kanan, supaya halamannya tidak terasa penuh. Di sisi
+            seberangnya ditemani potongan tangkapan layar proyek. */}
+        {c.sections.map((section, index) => {
+          const gambarDiKiri = index % 2 === 1;
+          const gambar = gambarBagian(caseSlug, section.number);
+          return (
+            <Reveal key={section.number} className={index === 0 ? "mt-20" : "mt-12 lg:mt-16"}>
+              <div
+                className={
+                  gambar
+                    ? `grid items-center gap-8 xl:gap-10 ${
+                        gambarDiKiri
+                          ? "xl:grid-cols-[minmax(0,1fr)_minmax(0,720px)]"
+                          : "xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)]"
+                      }`
+                    : "grid max-w-[1000px]"
+                }
+              >
+                <article
+                  className={`sticker bg-white p-7 sm:p-10 ${
+                    index % 2 === 0 ? "[--tilt:-0.3deg]" : "[--tilt:0.3deg]"
+                  } ${gambar && gambarDiKiri ? "xl:order-2" : ""}`}
+                >
+                  <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+                    <span className="text-[56px] font-bold leading-none text-accent">
+                      {section.number}
+                    </span>
+                    <h2 className="text-title relative inline-block text-ink">
+                      {section.title}
+                      <SquiggleMark className="absolute -bottom-[6px] left-0 h-[10px] w-full" />
+                    </h2>
+                  </div>
+                  <div className="mt-7 max-w-[680px] space-y-4">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph.slice(0, 24)} className="text-desc text-muted">
+                        {paragraph}
+                      </p>
+                    ))}
+                    {section.bullets && (
+                      <ul className="space-y-3 pt-2">
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet.slice(0, 24)} className="flex gap-3">
+                            <span
+                              aria-hidden="true"
+                              className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-scribble-blue"
+                            />
+                            <span className="text-desc text-muted">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </article>
+                {gambar && (
+                  <figure
+                    className={`sticker bg-white p-2 ${
+                      index % 2 === 0 ? "[--tilt:0.4deg]" : "[--tilt:-0.4deg]"
+                    } ${gambarDiKiri ? "xl:order-1" : ""}`}
+                  >
+                    <Image
+                      src={gambar}
+                      alt={section.imageAlt ?? `${c.title} · ${section.title}`}
+                      width={0}
+                      height={0}
+                      sizes="(min-width: 1280px) 370px, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </figure>
+                )}
+              </div>
+            </Reveal>
+          );
+        })}
+
+        {(c.links.live || c.links.docs) && (
+          <Reveal className="mt-20">
+            <div className="sticker flex flex-wrap items-center gap-5 bg-btn p-7">
+              {c.links.live && (
+                <a
+                  href={c.links.live.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-white px-6 py-3 text-[15px] font-bold text-ink transition-colors hover:bg-btn-hover"
+                >
+                  {c.links.live.label}
+                </a>
+              )}
+              {c.links.docs && (
+                <a
+                  href={c.links.docs.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
+                >
+                  {c.links.docs.label}
+                </a>
               )}
             </div>
           </Reveal>
-        ))}
-
-        <Reveal className="mt-20">
-          <div className="flex flex-wrap items-center gap-5 rounded-[6px] bg-btn/60 p-7">
-            <a
-              href={c.links.live.href}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-white px-6 py-3 text-[15px] font-bold text-ink transition-colors hover:bg-btn-hover"
-            >
-              {c.links.live.label}
-            </a>
-            <a
-              href={c.links.github.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
-            >
-              {dict.projects.githubLabel}
-            </a>
-            {c.links.docs && (
-              <a
-                href={c.links.docs.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[15px] font-semibold text-accent-dark transition-colors hover:text-[#004a94] hover:underline"
-              >
-                {c.links.docs.label}
-              </a>
-            )}
-          </div>
-        </Reveal>
+        )}
 
         <Reveal className="mt-12 pb-[120px] lg:pb-[150px]">
           <a
             href={casePath(locale, nextSlug)}
-            className="group flex items-center justify-between gap-4 rounded-[6px] border-[1.5px] border-ink/10 bg-white p-6 transition-all duration-200 hover:-translate-y-[3px] hover:border-scribble-blue/70"
+            className="sticker group flex max-w-[1000px] items-center justify-between gap-4 bg-white p-6 [--tilt:-0.4deg]"
           >
             <div>
               <p className="text-[13px] text-muted">{dict.case.next}</p>

@@ -101,6 +101,7 @@ export default async function OpengraphImage() {
               display: "flex",
             }}
           />
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text -- Satori merender ke PNG, bukan elemen DOM */}
           <img
             src={photo}
             width={220}

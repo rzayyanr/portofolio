@@ -16,6 +16,23 @@ export function catalogPath(locale: Locale): string {
   return `/${locale}/${localizedSlugs[locale].catalog}`;
 }
 
+/**
+ * Menerjemahkan slug halaman ke locale lain supaya tombol bahasa tidak
+ * kehilangan konteks. `path` adalah sisa path setelah prefix locale,
+ * misalnya "" | "/proyek" | "/proyek/capsl" | "/design-system".
+ */
+export function localizePath(locale: Locale, other: Locale, path: string): string {
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length === 0) return `/${other}`;
+  const [first, ...rest] = segments;
+  const kind = (["archive", "catalog"] as const).find(
+    (key) => localizedSlugs[locale][key] === first
+  );
+  if (!kind) return `/${other}`;
+  const suffix = rest.length > 0 ? `/${rest.join("/")}` : "";
+  return `/${other}/${localizedSlugs[other][kind]}${suffix}`;
+}
+
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
@@ -25,12 +42,13 @@ export const dictionary = {
     meta: {
       title: "Zayyan Rizka | Frontend Engineer & Mahasiswa Sistem Informasi",
       description:
-        "Frontend engineer & mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna: portal PKM kampus & aplikasi belajar bahasa isyarat.",
+        "Frontend engineer & mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna: portal PKM, aplikasi belajar bahasa isyarat, dan tracker lamaran.",
     },
     nav: {
-      name: "Zayyan Rizka",
+      name: "Zayyan",
       home: "Beranda",
       projects: "Proyek",
+      menuAria: "Menu utama",
       instagramAria: "Instagram Zayyan Rizka",
       toLang: "EN",
       toLangAria: "Beralih ke bahasa Inggris",
@@ -38,14 +56,11 @@ export const dictionary = {
       linkedinAria: "LinkedIn Zayyan Rizka",
     },
     hero: {
-      intro: {
-        start: "Saya ",
-        mark: "frontend engineer",
-        middle: " sekaligus mahasiswa Sistem Informasi yang senang membangun ",
-        underlined: "produk web yang rapi dan berguna.",
-      },
+      nameLabel: "halo, saya",
+      name: "Muhammad Zayyan Rizka",
+      role: "Frontend engineer · Mahasiswa Sistem Informasi",
       paragraphLead:
-        "Saya bekerja sebagai frontend engineer di Skalar Solution dengan penugasan berbasis proyek. Di luar itu saya memimpin Pronuts, rintisan startup kuliner yang lahir dari program kreativitas mahasiswa, dan aktif sebagai awardee Beasiswa Bank Indonesia lewat GENBI Jakarta.",
+        "Sehari-hari saya membangun antarmuka web, sekarang dengan penugasan berbasis proyek di Skalar Solution.",
       paragraphLinks: {
         pre: " Lebih banyak cerita di ",
         github: "GitHub",
@@ -62,7 +77,7 @@ export const dictionary = {
     projects: {
       heading: "Proyek Pilihan",
       allButton: "Lihat semua proyek",
-      caseLabel: "Studi Kasus",
+      caseLabel: "Selengkapnya",
       liveLabel: "Kunjungi Website",
       codelabLabel: "Coba Aplikasi",
       githubLabel: "GitHub",
@@ -75,7 +90,7 @@ export const dictionary = {
           featured: true,
           caseSlug: "pkm-upnvj",
           description:
-            "Website pusat informasi Program Kreativitas Mahasiswa untuk UPN Veteran Jakarta: panduan 10 bidang, alur pendaftaran, tema 2026, tips proposal, dan unduhan panduan resmi. Panel admin ber-autentikasi Google memungkinkan pengelola memperbarui pengumuman dan agenda tanpa menyentuh kode.",
+            "Portal informasi PKM UPNVJ: panduan sepuluh bidang, alur pendaftaran, dan panel admin tanpa koding untuk pengelola.",
           role: "Peran: riset kebutuhan, PRD, design system, pengembangan, deploy, hingga runbook serah terima; semua dikerjakan sendiri dari nol.",
           stats: [
             { value: "10", label: "bidang PKM terstruktur" },
@@ -86,7 +101,7 @@ export const dictionary = {
           links: {
             live: { label: "Kunjungi Website", href: "https://pkm-upnvj.vercel.app" },
             github: { href: "https://github.com/rzayyanr/pkm-upnvj" },
-            docs: { href: "https://github.com/rzayyanr/pkm-upnvj/tree/main/website/docs" },
+            docs: { href: "https://github.com/rzayyanr/pkm-upnvj/tree/master/docs" },
           },
           image: "/images/pkm-upnvj.png",
           imageAlt: "Tangkapan layar beranda website PKM UPNVJ",
@@ -98,7 +113,7 @@ export const dictionary = {
           featured: true,
           caseSlug: "capsl",
           description:
-            "Aplikasi web belajar Bahasa Isyarat Indonesia (SIBI) dengan pengenalan gestur real-time lewat kamera: MediaPipe melacak 21 titik tangan, model MLP yang saya latih menilai pose, lengkap dengan umpan balik korektif, kuis hafalan, dan gamifikasi XP & streak. Semua berjalan di browser, tanpa server.",
+            "Aplikasi web belajar Bahasa Isyarat Indonesia dengan koreksi gerakan real-time langsung dari kamera browser.",
           role: "Peran: satu-satunya developer di tim dua orang, dari pipeline dataset & pelatihan model hingga produk akhir.",
           stats: [
             { value: "89,9%", label: "akurasi model" },
@@ -113,6 +128,25 @@ export const dictionary = {
           },
           image: "/images/capsl.png",
           imageAlt: "Tangkapan layar aplikasi CapSL dengan latihan isyarat lewat kamera",
+        },
+        {
+          title: "Luma",
+          tagline: "Application tracker untuk mengelola proses lamaran dalam satu tempat",
+          year: "2026",
+          featured: true,
+          caseSlug: "luma",
+          description:
+            "Aplikasi personal untuk mengatur peluang kerja, magang, dan beasiswa, dari ditemukan sampai tindak lanjut.",
+          role: "Peran: mengembangkan aplikasi dan arsitektur penyimpanan data lokal.",
+          stats: [
+            { value: "10", label: "route aplikasi" },
+            { value: "Local", label: "penyimpanan privat di browser" },
+            { value: "JSON", label: "format backup dan restore" },
+          ],
+          tech: ["React", "TypeScript", "Vite", "React Router", "Recharts"],
+          links: { live: null, github: null, docs: null },
+          image: "/images/luma.png",
+          imageAlt: "Dashboard Luma Application Tracker dengan ringkasan dan grafik lamaran",
         },
       ] as ProjectItem[],
     },
@@ -177,8 +211,11 @@ export const dictionary = {
         "Saya Zayyan, mahasiswa Sistem Informasi semester 5 (IPK 3,82) di UPN Veteran Jakarta. Saya suka membangun hal-hal yang benar-benar dipakai orang, bukan sekadar tugas yang selesai.",
         "Kalau tidak di depan layar, saya biasanya main gitar atau menumpuk komik yang belum selesai dibaca.",
       ],
-      howTitle: "Cara saya kerja",
-      how: "Riset dulu, tulis PRD, catat keputusan penting sebagai ADR, bangun, lalu serahkan dengan dokumentasi rapi, supaya apa pun yang saya buat bisa dilanjutkan orang lain.",
+      educationTitle: "Pendidikan",
+      education: {
+        name: "S1 Sistem Informasi, UPN Veteran Jakarta",
+        note: "2024 sampai sekarang · IPK 3,82",
+      },
       activitiesTitle: "Pengalaman & Kegiatan",
       activities: [
         {
@@ -219,12 +256,13 @@ export const dictionary = {
     meta: {
       title: "Zayyan Rizka | Frontend Engineer & Information Systems Student",
       description:
-        "A frontend engineer & Information Systems student at UPN Veteran Jakarta who builds clean and useful web products: a campus PKM portal & a sign-language learning app.",
+        "A frontend engineer & Information Systems student at UPN Veteran Jakarta who builds clean and useful web products: a PKM portal, sign-language learning app, and application tracker.",
     },
     nav: {
-      name: "Zayyan Rizka",
+      name: "Zayyan",
       home: "Home",
       projects: "Projects",
+      menuAria: "Main menu",
       instagramAria: "Zayyan Rizka on Instagram",
       toLang: "ID",
       toLangAria: "Switch to Indonesian",
@@ -232,14 +270,11 @@ export const dictionary = {
       linkedinAria: "Zayyan Rizka on LinkedIn",
     },
     hero: {
-      intro: {
-        start: "I'm a ",
-        mark: "frontend engineer",
-        middle: " and Information Systems student who builds ",
-        underlined: "clean and useful web products.",
-      },
+      nameLabel: "hi, I'm",
+      name: "Muhammad Zayyan Rizka",
+      role: "Frontend engineer · Information Systems student",
       paragraphLead:
-        "I work as a frontend engineer at Skalar Solution on a project basis. Beyond that, I lead Pronuts, a culinary startup incubated through a student creativity program, and stay active as a Bank Indonesia Scholarship awardee through GENBI Jakarta.",
+        "I build web interfaces, currently on a project basis at Skalar Solution.",
       paragraphLinks: {
         pre: " More of my story on ",
         github: "GitHub",
@@ -256,7 +291,7 @@ export const dictionary = {
     projects: {
       heading: "Selected Projects",
       allButton: "View all projects",
-      caseLabel: "Case Study",
+      caseLabel: "More details",
       liveLabel: "Visit Website",
       codelabLabel: "Try the App",
       githubLabel: "GitHub",
@@ -269,7 +304,7 @@ export const dictionary = {
           featured: true,
           caseSlug: "pkm-upnvj",
           description:
-            "A centralized PKM information website for UPN Veteran Jakarta: guides for all 10 fields, the application flow, 2026 themes, proposal tips, and official downloads. A Google-authenticated admin panel lets staff update announcements and schedules without touching any code.",
+            "The PKM UPNVJ information hub: guides for ten fields, a registration flow, and a no-code admin panel for staff.",
           role: "Role: requirements research, PRD, design system, development, deployment, and handover runbook; done solo from zero.",
           stats: [
             { value: "10", label: "PKM fields structured" },
@@ -280,7 +315,7 @@ export const dictionary = {
           links: {
             live: { label: "Visit Website", href: "https://pkm-upnvj.vercel.app" },
             github: { href: "https://github.com/rzayyanr/pkm-upnvj" },
-            docs: { href: "https://github.com/rzayyanr/pkm-upnvj/tree/main/website/docs" },
+            docs: { href: "https://github.com/rzayyanr/pkm-upnvj/tree/master/docs" },
           },
           image: "/images/pkm-upnvj.png",
           imageAlt: "Screenshot of the PKM UPNVJ website homepage",
@@ -292,7 +327,7 @@ export const dictionary = {
           featured: true,
           caseSlug: "capsl",
           description:
-            "A web app for learning Indonesian Sign Language (SIBI) with real-time camera gesture recognition: MediaPipe tracks 21 hand landmarks and an MLP model I trained scores poses, with corrective feedback, memory quizzes, and XP & streak gamification. Everything runs in the browser, no server needed.",
+            "A web app for learning Indonesian Sign Language with real-time gesture correction from the browser camera.",
           role: "Role: the sole developer in a two-person team, from the dataset pipeline & model training to the final product.",
           stats: [
             { value: "89.9%", label: "model accuracy" },
@@ -307,6 +342,25 @@ export const dictionary = {
           },
           image: "/images/capsl.png",
           imageAlt: "Screenshot of CapSL practicing sign language with the camera",
+        },
+        {
+          title: "Luma",
+          tagline: "An application tracker for managing every opportunity in one place",
+          year: "2026",
+          featured: true,
+          caseSlug: "luma",
+          description:
+            "A personal app for organizing jobs, internships, and scholarships from discovery through follow-up.",
+          role: "Role: application development and local-first data architecture.",
+          stats: [
+            { value: "10", label: "application routes" },
+            { value: "Local", label: "private browser storage" },
+            { value: "JSON", label: "backup and restore format" },
+          ],
+          tech: ["React", "TypeScript", "Vite", "React Router", "Recharts"],
+          links: { live: null, github: null, docs: null },
+          image: "/images/luma.png",
+          imageAlt: "Luma Application Tracker dashboard with application summaries and charts",
         },
       ] as ProjectItem[],
     },
@@ -371,8 +425,11 @@ export const dictionary = {
         "I'm Zayyan, a 5th-semester Information Systems student (GPA 3.82) at UPN Veteran Jakarta. I like building things people actually use, not just assignments that get done.",
         "When I'm not in front of a screen, I'm usually playing guitar or stacking up comics I haven't finished reading.",
       ],
-      howTitle: "How I work",
-      how: "Research first, write the PRD, log key decisions as ADRs, build, then hand over with clean documentation, so anything I make can be continued by someone else.",
+      educationTitle: "Education",
+      education: {
+        name: "BSc Information Systems, UPN Veteran Jakarta",
+        note: "2024 to present · GPA 3.82",
+      },
       activitiesTitle: "Experience & Activities",
       activities: [
         {
@@ -422,8 +479,8 @@ export type ProjectItem = {
   stats: { value: string; label: string }[];
   tech: string[];
   links: {
-    live: { label: string; href: string };
-    github: { href: string };
+    live: { label: string; href: string } | null;
+    github: { href: string } | null;
     docs: { href: string } | null;
   };
   image: string;

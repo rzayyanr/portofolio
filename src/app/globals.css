@@ -17,6 +17,76 @@
     "Segoe UI", sans-serif;
 }
 
+:root {
+  /* Kertas: grid, titik spiral, dan garis margin. */
+  --rule: #c9d6e8;
+  --rule-strong: #a9bbd6;
+  --margin-red: #e9a6a0;
+  /* Bayangan keras dipakai beberapa komponen sekaligus. */
+  --shadow-hard: rgba(19, 19, 19, 0.13);
+}
+
+/* Lapisan kertas, diam di belakang konten. */
+.paper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.paper-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+  opacity: 0.9;
+}
+
+/* Titik spiral dan garis margin menempel di tepi kiri layar, tidak ikut container
+   yang di tengah, persis seperti referensi. Konten digeser ke kanan oleh
+   padding .container-site supaya tidak tertabrak. */
+.paper-spiral {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 44px;
+  display: none;
+  background-image: radial-gradient(circle at 50% 50%, var(--rule-strong) 5.5px, transparent 6.5px);
+  background-size: 100% 44px;
+  background-position: 0 26px;
+  background-repeat: repeat-y;
+  border-right: 1px solid var(--rule);
+}
+
+.paper-margin {
+  position: absolute;
+  left: 78px;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  display: none;
+  background: var(--margin-red);
+  opacity: 0.8;
+}
+
+@media (min-width: 992px) {
+  .paper-spiral,
+  .paper-margin {
+    display: block;
+  }
+}
+
+/* Konten harus berada di atas lapisan kertas. */
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -24,6 +94,11 @@ html {
 html,
 body {
   overflow-x: clip;
+}
+
+a,
+button {
+  touch-action: manipulation;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -55,28 +130,289 @@ body {
   }
 }
 
+/* Ruang untuk spiral dan garis margin di kiri, seperti --bind di referensi:
+   garis margin di 78px, konten mulai di 92px. */
+@media (min-width: 992px) {
+  .container-site {
+    padding-left: 92px;
+  }
+}
+
 .text-hero {
-  font-size: clamp(26px, 1.6vw + 16px, 38px);
+  font-size: clamp(24px, 1.6vw + 12px, 38px);
   line-height: 1.25;
   letter-spacing: 0.5px;
   font-weight: 600;
+  text-wrap: balance;
 }
 
-.mark-oval {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath d='M14 52 C10 26 96 8 208 10 C310 12 388 26 386 48 C384 70 300 84 186 82 C88 80 18 68 16 48 C14 32 74 20 150 16' fill='none' stroke='%23A4DCFE' stroke-width='4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  padding: 0.08em 0.14em;
-  margin: -0.08em -0.14em;
+/* Lingkaran nama di hero menggambar sendiri begitu halaman dibuka atau di-refresh.
+   pathLength=1 di SVG membuat satuan panjang goresan jadi 1. Panjang goresan
+   dipasang 2, bukan 1: dengan 1, browser hanya menutup sekitar 90 persen jalur,
+   jadi ujung goresan (sisi kiri lingkaran) tidak ikut tergambar. Angka 2 lebih
+   besar dari panjang jalur, jadi seluruh lingkaran pasti tertutup penuh, dan
+   animasinya tetap jalan karena offset-nya turun dari 2 ke 0. */
+.oval-draw path {
+  stroke-dasharray: 2;
+  stroke-dashoffset: 0;
+  animation: oval-draw 0.9s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0.35s both;
+}
+
+@keyframes oval-draw {
+  from {
+    stroke-dashoffset: 2;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oval-draw path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Stabilo digores satu per satu saat kotaknya masuk layar. Tanpa JavaScript
+   (kelas .js tidak ada) goresannya langsung tergambar penuh, jadi tidak ada
+   label yang kehilangan sorotan. Jeda antar label diatur inline dari komponen. */
+.js .mark-stabilo {
+  background-size: 0% var(--stab-1), 0% var(--stab-2);
+}
+
+.js .reveal-visible .mark-stabilo {
+  background-size: calc(100% + 6px) var(--stab-1), calc(100% + 4px) var(--stab-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Dipakai bersama .js supaya menang atas aturan dasar yang menyalakan transisi. */
+  .js .mark-stabilo {
+    background-size: calc(100% + 6px) var(--stab-1), calc(100% + 4px) var(--stab-2);
+    transition: none;
+  }
+}
+
+/* Stabilo: goresan marker di belakang teks, warna sama dengan goresan di
+   Pengalaman & Kegiatan. Tiap label dapat dua lapis goresan (lapis utama dan
+   goresan kedua yang lebih kecil dan miring) supaya terasa digores dua kali
+   dengan tangan, bukan kotak rapi. Bentuk dan ukurannya diganti-ganti lewat
+   nth-child supaya tidak seragam. Teks di atasnya wajib gelap: --color-muted
+   hanya mencapai kontras 3,3:1 di atas biru ini, di bawah syarat 4,5:1,
+   sedangkan --color-ink mencapai 12:1. */
+.mark-stabilo {
+  --stab-1: 124%;
+  --stab-2: 92%;
+  display: inline-block;
+  padding: 0.08em 0.4em;
+  color: var(--color-ink);
+  font-weight: 600;
+  background-repeat: no-repeat, no-repeat;
+  /* Posisi kiri, bukan tengah, supaya saat lebarnya dianimasikan dari nol
+     goresannya tumbuh dari kiri ke kanan seperti digores tangan. */
+  background-position: left center, 58% 44%;
+  /* Lebar goresan pakai calc supaya lebihnya selalu 3px di tiap sisi, bukan
+     mengikuti persentase lebar kata. Kalau persentase, jarak antar label jadi
+     tidak rata karena kata panjang melebar lebih banyak. */
+  background-size: calc(100% + 6px) var(--stab-1), calc(100% + 4px) var(--stab-2);
+  /* Kurva gerak hampir linier dengan sedikit percepatan di awal dan perlambatan
+     di akhir, supaya terbaca seperti tangan yang menggores, bukan seperti
+     elemen yang muncul mendadak. */
+  transition: background-size 0.32s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 44' preserveAspectRatio='none'%3E%3Cpath d='M3 36 C10 20 5 16 9 11 C32 4 58 16 82 8 C106 1 132 14 156 7 C172 3 188 11 197 6 L192 34 C170 42 144 31 118 39 C94 43 68 33 44 40 C28 43 13 38 3 36 Z' fill='%23A4DCFE' fill-opacity='0.92'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 32' preserveAspectRatio='none'%3E%3Cpath d='M4 13 C24 6 44 17 64 10 C84 3 102 13 117 7 L114 26 C96 31 76 23 56 28 C38 32 18 27 4 24 Z' fill='%23A4DCFE' fill-opacity='0.45'/%3E%3C/svg%3E");
+}
+
+.mark-stabilo--1 {
+  --stab-1: 116%;
+  --stab-2: 86%;
+  background-position: left center, 42% 58%;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 44' preserveAspectRatio='none'%3E%3Cpath d='M2 31 C14 23 26 16 40 13 C62 8 84 16 106 11 C128 6 150 15 172 10 C182 8 191 11 198 9 L194 34 C176 31 158 39 138 35 C116 30 94 38 72 34 C50 30 28 37 12 33 C6 32 3 31 2 31 Z' fill='%23A4DCFE' fill-opacity='0.92'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 32' preserveAspectRatio='none'%3E%3Cpath d='M3 18 C22 11 40 20 60 13 C80 6 98 15 116 9 L112 25 C94 20 74 29 54 24 C34 19 16 24 3 22 Z' fill='%23A4DCFE' fill-opacity='0.45'/%3E%3C/svg%3E");
+}
+
+.mark-stabilo--2 {
+  --stab-1: 130%;
+  --stab-2: 98%;
+  background-position: left center, 66% 36%;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 44' preserveAspectRatio='none'%3E%3Cpath d='M4 35 C12 26 8 20 12 14 C34 8 60 18 84 11 C108 4 134 16 158 9 C174 5 188 12 196 8 L197 37 C180 34 162 42 140 37 C118 32 96 41 74 36 C52 31 30 40 14 35 C9 34 6 35 4 35 Z' fill='%23A4DCFE' fill-opacity='0.92'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 32' preserveAspectRatio='none'%3E%3Cpath d='M5 14 C26 8 46 18 66 11 C86 4 104 12 118 8 L115 27 C98 22 78 30 58 25 C40 21 22 26 5 23 Z' fill='%23A4DCFE' fill-opacity='0.45'/%3E%3C/svg%3E");
 }
 
 .text-title {
   font-size: clamp(28px, 1.4vw + 14px, 34px);
   line-height: 1.2;
   font-weight: 700;
+  text-wrap: balance;
+}
+
+/* Kotak melayang naik turun perlahan. Awalnya 6px dalam 11 detik mengikuti
+   referensi, tapi gerakannya terlalu halus sampai tidak terlihat, jadi
+   dipercepat dan sedikit diperbesar. Memakai properti `translate` terpisah,
+   bukan `transform`, supaya tidak bentrok dengan kemiringan --tilt maupun
+   efek angkat saat kursor menghampiri. animation-delay negatif membuatnya
+   mulai di tengah siklus, jadi tidak terlihat seperti baru dimulai. */
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+.drift {
+  animation: drift 3.4s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift {
+    animation: none;
+  }
+}
+
+/* Kucing pixel di tepi kotak Pengalaman & Kegiatan. Kibasan ekornya dibuat dari
+   dua belas frame sprite yang ditukar bergantian, bukan dari menggeser satu
+   bentuk, supaya gerakannya mengalir seperti animasi pixel art pada umumnya.
+   Tiap frame dapat jatah waktu yang sama lewat animation-delay negatif, jadi
+   cukup satu keyframes. 12 frame x 0,12 detik = 1,44 detik per putaran. */
+.pixel-cat {
+  display: block;
+  overflow: visible;
+}
+
+.pixel-cat__ekor-frame {
+  opacity: 0;
+  animation: cat-ekor-frame 1.44s steps(1) infinite;
+}
+
+.pixel-cat__mata {
+  animation: cat-kedip 4.6s steps(1) infinite;
+}
+
+@keyframes cat-ekor-frame {
+  0% {
+    opacity: 1;
+  }
+
+  8.34% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cat-kedip {
+  0%,
+  92% {
+    opacity: 1;
+  }
+
+  92.1%,
+  96% {
+    opacity: 0;
+  }
+
+  96.1%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-cat__ekor-frame,
+  .pixel-cat__mata {
+    animation: none;
+  }
+
+  /* Tanpa gerakan, ekor ditampilkan pada posisi diamnya, yaitu frame pertama. */
+  .pixel-cat__ekor-frame {
+    opacity: 0;
+  }
+
+  .pixel-cat__ekor-frame:first-child {
+    opacity: 1;
+  }
+}
+
+/* Kucing pixel putih di sudut kotak kontak. Outline tinta menjaga bentuknya
+   tetap terbaca di atas kertas putih dan grid; gerakan lambaian tangannya
+   membedakannya dari kucing duduk yang mengibaskan ekor di bagian pengalaman. */
+.contact-pixel-cat {
+  display: block;
+  overflow: visible;
+}
+
+.contact-pixel-cat__wave {
+  transform-box: fill-box;
+  transform-origin: left bottom;
+  animation: contact-cat-wave 0.72s ease-in-out infinite alternate;
+}
+
+@keyframes contact-cat-wave {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-pixel-cat__wave {
+    animation: none;
+  }
+}
+
+.contact-tape {
+  background-color: color-mix(in srgb, var(--color-scribble-red) 72%, transparent);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(255 255 255 / 20%) 0 2px,
+    transparent 2px 8px
+  );
+  box-shadow: 0 1px 1px var(--shadow-hard);
+  transform: rotate(-5deg);
+  clip-path: polygon(2% 2%, 100% 0, 97% 98%, 0 100%);
+}
+
+/* Kertas tempel: border tegas, sudut hampir siku, bayangan keras tanpa blur.
+   Kemiringan diatur utility Tailwind lewat --tilt. Jangan menulis `--tilt: 0deg`
+   di sini: aturan ini ada di luar layer Tailwind, jadi akan selalu menimpa
+   utility dan mematikan semua kemiringan. Cukup pakai fallback var(--tilt, 0deg). */
+.sticker {
+  transform: rotate(var(--tilt, 0deg));
+  border: 1px solid var(--color-ink);
+  border-radius: 3px;
+  box-shadow: 4px 5px 0 var(--shadow-hard);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+
+.sticker:hover,
+.sticker:focus-within {
+  transform: rotate(var(--tilt, 0deg)) translate(-1px, -2px);
+  box-shadow: 7px 9px 0 var(--shadow-hard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker,
+  .sticker:hover,
+  .sticker:focus-within {
+    transition: none;
+    transform: rotate(var(--tilt, 0deg));
+  }
 }
 
 .text-lead {
@@ -89,23 +425,30 @@ body {
   line-height: 1.45;
 }
 
+/* Animasi masuk hanya aktif bila JavaScript tersedia; tanpa JS konten tetap terbaca. */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
   transition:
     opacity 0.5s ease-out,
     transform 0.5s ease-out;
 }
 
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js .reveal-visible,
 .reveal-visible {
   opacity: 1;
   transform: none;
 }
 
-/* Coretan yang menggambar sendiri saat kartu di-hover */
+/* Coretan yang menggambar sendiri saat kartu di-hover. Panjang goresan dipasang 2,
+   bukan 1, karena dengan 1 browser hanya menutup sekitar 90 persen jalur dan
+   ujung goresannya tertinggal. */
 .squiggle-draw path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 2;
+  stroke-dashoffset: 2;
   transition: stroke-dashoffset 0.45s ease-out;
 }
 
@@ -119,8 +462,106 @@ body {
   }
 }
 
+/* Goresan di bawah baris peran hero menggambar sendiri begitu halaman dibuka
+   atau di-refresh, jadi terasa seperti stabilo yang ditarik dari kiri ke kanan.
+   Jedanya menyusul lingkaran nama yang selesai lebih dulu, supaya keduanya
+   tidak bergerak bersamaan. Panjang goresan dipasang 2 dengan alasan yang sama
+   seperti .squiggle-draw: angka 1 menyisakan ujung goresan yang tidak tertutup. */
+.squiggle-load path {
+  stroke-dasharray: 2;
+  stroke-dashoffset: 0;
+  animation: squiggle-load 0.7s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0.75s both;
+}
+
+@keyframes squiggle-load {
+  from {
+    stroke-dashoffset: 2;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .squiggle-load path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Kata-kata paragraf hero naik dari balik garis dasarnya saat halaman dibuka
+   atau di-refresh, seperti huruf yang ditempel ke kertas. Tiap kata dibungkus
+   wadah ber-overflow tersembunyi supaya pangkalnya benar-benar terpotong, dan
+   nomor urutnya dipakai menghitung jeda beruntun lewat --i. Tanpa JavaScript
+   (kelas .js tidak ada) kata-katanya tampil penuh, jadi tidak ada teks yang
+   hilang. Fill mode both dipakai supaya keadaan awal tertahan selama jeda,
+   jadi kata tidak berkedip tampil sebelum gilirannya tiba. */
+.kata {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* Ruang ekstra di bawah supaya garis bawah tautan yang digeser 4px ke bawah
+     tidak ikut terpotong wadahnya. Tinggi barisnya dikembalikan lewat margin
+     negatif supaya tata letaknya tidak bergeser. */
+  padding-bottom: 0.5em;
+  margin-bottom: -0.5em;
+}
+
+.js .kata-isi {
+  display: inline-block;
+  animation: kata-naik 0.45s cubic-bezier(0.3, 0, 0.2, 1) both;
+  animation-delay: calc(1.4s + var(--i) * 0.022s);
+}
+
+@keyframes kata-naik {
+  from {
+    transform: translateY(105%);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .kata-isi {
+    animation: none;
+  }
+}
+
+/* Tombol hero tumbuh dengan sedikit memantul, menyusul kata terakhir paragraf
+   yang mendarat sekitar detik 2,4. Kurvanya melewati sedikit di atas ukuran
+   akhir sebelum diam, jadi terasa seperti tombol karet yang muncul, bukan
+   elemen yang tiba-tiba ada. Nomor urut dipakai untuk jeda antar tombol. Tanpa
+   JavaScript (kelas .js tidak ada) tombolnya tampil biasa. */
+.js .tombol-hero {
+  animation: tombol-kembang 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+  animation-delay: calc(2.45s + var(--i) * 0.12s);
+}
+
+@keyframes tombol-kembang {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .tombol-hero {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;

@@ -3,6 +3,8 @@ import { Public_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
+import { buildMetadata } from "@/lib/metadata";
+import PaperBackground from "@/components/PaperBackground";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -21,24 +23,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const dict = getDictionary(locale);
-  return {
-    metadataBase: new URL("https://rzayyanr.vercel.app"),
+  const valid: Locale = isLocale(locale) ? locale : "id";
+  const dict = getDictionary(valid);
+  return buildMetadata({
+    locale: valid,
+    path: "",
     title: dict.meta.title,
     description: dict.meta.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: { id: "/id", en: "/en" },
-    },
-    openGraph: {
-      title: dict.meta.title,
-      description: dict.meta.description,
-      url: `/${locale}`,
-      siteName: "Zayyan Rizka",
-      locale,
-      type: "website",
-    },
-  };
+  });
 }
 
 export default async function LocaleLayout({
@@ -52,7 +44,15 @@ export default async function LocaleLayout({
   const validLocale: Locale = isLocale(locale) ? locale : "id";
   return (
     <html lang={validLocale} className={publicSans.variable}>
+      <head>
+        {/* Menandai bahwa JS aktif supaya animasi masuk tidak menyembunyikan konten
+            ketika JavaScript gagal dimuat. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
+      </head>
       <body>
+        <PaperBackground />
         {children}
         {process.env.NEXT_PUBLIC_VERCEL_ENV ? <Analytics /> : null}
       </body>

@@ -5,7 +5,19 @@ type Props = {
   alt: string;
 };
 
-/** Bingkai coretan tangan yang mencong-mencong, stroke biru identitas situs. */
+/**
+ * Bingkai coretan tangan yang mencong-mencong, stroke biru identitas situs.
+ * Dua hal yang disengaja:
+ * 1. Digambar di atas foto (z-20, fotonya z-10) supaya goresannya tidak bisa
+ *    terpotong apa pun yang ada di dalam foto.
+ * 2. Tingginya 108,9 persen, bukan 106 persen seperti ukuran kotaknya. Goresan
+ *    bawah bingkai ini bergelombang dan ujung kanannya naik lebih tinggi dari
+ *    bagian tengahnya, jadi tingginya ditentukan dari titik tertinggi itu:
+ *    diukur dari ujung kaki, pada 108,5 persen goresan sudah menyentuh kaki
+ *    kanan 0,4 px, sedangkan pada 108,9 persen masih tersisa 0,8 px di titik
+ *    terdekat. Jadi goresannya mendarat tepat di bawah kaki, terbaca seperti
+ *    garis pembatas tempat kaki berpijak, tanpa kakinya menembus bingkai.
+ */
 function FrameMark() {
   return (
     <svg
@@ -13,7 +25,7 @@ function FrameMark() {
       fill="none"
       aria-hidden="true"
       preserveAspectRatio="none"
-      className="absolute -left-[6%] -top-[3%] -z-10 h-[106%] w-[112%]"
+      className="absolute -left-[6%] -top-[3%] z-20 h-[108.9%] w-[112%]"
     >
       <path
         d="M 22 34 C 70 20 160 13 245 17 C 325 21 380 28 382 58 C 385 118 379 198 383 278 C 386 338 381 408 371 448 C 300 462 178 467 94 459 C 47 454 15 446 17 406 C 21 342 13 242 17 162 C 19 112 15 66 19 36 C 21 26 33 22 47 20"
@@ -28,24 +40,8 @@ function FrameMark() {
 
 export default function HeroPortrait({ className, alt }: Props) {
   return (
-    <div className={`relative mx-auto w-full max-w-[360px] ${className ?? ""}`}>
+    <div className={`relative mx-auto w-full max-w-[360px] sm:[transform:rotate(-0.8deg)] ${className ?? ""}`}>
       <FrameMark />
-      <svg
-        viewBox="0 0 400 90"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        className="absolute -left-[4%] top-[36%] -z-10 h-[42%] w-[108%]"
-      >
-        <path
-          d="M14 52 C10 26 96 8 208 10 C310 12 388 26 386 48 C384 70 300 84 186 82 C88 80 18 68 16 48 C14 32 74 20 150 16"
-          fill="#AEDFFD"
-          fillOpacity="0.55"
-        />
-      </svg>
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-[4px] left-1/2 z-0 h-[18px] w-[72%] -translate-x-1/2 rounded-full bg-[#F4F7F9]"
-      />
       <Image
         src="/images/foto-final.png"
         alt={alt}

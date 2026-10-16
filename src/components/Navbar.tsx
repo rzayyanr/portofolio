@@ -1,4 +1,5 @@
-import { archivePath, getDictionary, type Locale } from "@/content/dictionary";
+import { archivePath, getDictionary, localizePath, type Locale } from "@/content/dictionary";
+import ReadingProgress from "./ReadingProgress";
 
 function GithubIcon() {
   return (
@@ -27,19 +28,25 @@ function LinkedinIcon() {
 export default function Navbar({
   locale,
   activePage,
+  path = "",
 }: {
   locale: Locale;
   activePage?: "archive";
+  /** Sisa path setelah prefix locale, supaya tombol bahasa tetap di halaman yang sama. */
+  path?: string;
 }) {
   const dict = getDictionary(locale);
   const other: Locale = locale === "id" ? "en" : "id";
   return (
-    <header className="absolute inset-x-0 top-0 z-20">
-      <div className="container-site flex h-[90px] items-center justify-between lg:h-[140px]">
-        <a href={`/${locale}`} className="text-[25px] font-bold tracking-tight text-ink lg:text-[35px]">
+    <header className="sticky top-0 z-30 border-b-[1.5px] border-ink bg-white/85 backdrop-blur-md">
+      <div className="container-site flex flex-col gap-2 py-3 sm:h-[76px] sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-0">
+        <a
+          href={`/${locale}`}
+          className="text-[23px] font-bold tracking-tight text-ink lg:text-[32px]"
+        >
           {dict.nav.name}
         </a>
-        <div className="flex items-center gap-5">
+        <nav aria-label={dict.nav.menuAria} className="flex items-center gap-3 sm:gap-5">
           <a
             href={archivePath(locale)}
             className={
@@ -55,7 +62,7 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.githubAria}
-            className="text-ink transition-colors hover:text-accent"
+            className="p-1 text-ink transition-colors hover:text-accent"
           >
             <GithubIcon />
           </a>
@@ -64,7 +71,7 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.linkedinAria}
-            className="text-ink transition-colors hover:text-accent"
+            className="p-1 text-ink transition-colors hover:text-accent"
           >
             <LinkedinIcon />
           </a>
@@ -73,20 +80,21 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.instagramAria}
-            className="text-ink transition-colors hover:text-accent"
+            className="p-1 text-ink transition-colors hover:text-accent"
           >
             <InstagramIcon />
           </a>
           <a
-            href={`/${other}`}
+            href={localizePath(locale, other, path)}
             lang={other}
             aria-label={`${dict.nav.toLang} · ${dict.nav.toLangAria}`}
             className="rounded-full border-2 border-ink/10 px-3.5 py-1.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {dict.nav.toLang}
           </a>
-        </div>
+        </nav>
       </div>
+      <ReadingProgress />
     </header>
   );
 }

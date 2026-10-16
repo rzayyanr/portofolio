@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import {
-  getDictionary,
   isLocale,
   localizedSlugs,
   locales,
   type Locale,
 } from "@/content/dictionary";
+import { buildMetadata } from "@/lib/metadata";
 import { caseStudies, caseSlugs, type CaseSlug } from "@/content/cases";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseStudy from "@/components/CaseStudy";
-import NotFound from "@/components/NotFound";
 
 type Props = {
   params: Promise<{ locale: string; slug: string; case: string }>;
@@ -37,36 +37,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolved = resolveCase(locale, slug, caseSlug);
   if (!resolved) return {};
   const c = caseStudies[resolved][locale];
-  return {
+  return buildMetadata({
+    locale,
+    path: `/${slug}/${caseSlug}`,
     title: `${c.title} | Zayyan Rizka`,
     description: c.tagline,
-  };
+  });
 }
 
 export default async function CasePage({ params }: Props) {
   const { locale, slug, case: caseSlug } = await params;
-  if (!isLocale(locale)) {
-    return (
-      <>
-        <Navbar locale="id" />
-        <NotFound locale="id" />
-        <Footer locale="id" />
-      </>
-    );
-  }
+  if (!isLocale(locale)) notFound();
   const resolved = resolveCase(locale, slug, caseSlug);
-  if (!resolved) {
-    return (
-      <>
-        <Navbar locale={locale} />
-        <NotFound locale={locale} />
-        <Footer locale={locale} />
-      </>
-    );
-  }
+  if (!resolved) notFound();
   return (
     <>
-      <Navbar locale={locale} activePage="archive" />
+      <Navbar locale={locale} activePage="archive" path={`/${slug}/${caseSlug}`} />
       <main>
         <CaseStudy locale={locale} caseSlug={resolved} />
       </main>

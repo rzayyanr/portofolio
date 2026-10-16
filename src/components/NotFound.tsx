@@ -4,10 +4,15 @@ import { TealDoodle } from "./scribbles";
 export default function NotFound({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   return (
-    <section className="flex min-h-[85vh] items-center pt-[100px]">
+    <section className="flex min-h-[70vh] items-center py-16">
       <div className="container-site text-center">
         <div className="relative inline-block">
-          <p className="text-[110px] font-bold leading-none text-scribble-blue sm:text-[150px]">404</p>
+          <p
+            aria-hidden="true"
+            className="text-[110px] font-bold leading-none text-accent sm:text-[150px]"
+          >
+            404
+          </p>
           <TealDoodle className="absolute -right-[70px] top-[10px] hidden h-[46px] w-[64px] sm:block" />
         </div>
         <h1 className="text-title mt-2 text-ink">{dict.notFound.title}</h1>

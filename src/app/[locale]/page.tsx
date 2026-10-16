@@ -21,8 +21,8 @@ export default async function Page({
       <Navbar locale={locale} />
       <main>
         <Hero locale={locale} />
-        <Projects locale={locale} />
         <About locale={locale} />
+        <Projects locale={locale} />
         <Contact locale={locale} />
       </main>
       <Footer locale={locale} />

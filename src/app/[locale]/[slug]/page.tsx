@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import {
   getDictionary,
   isLocale,
@@ -6,11 +7,11 @@ import {
   locales,
   type Locale,
 } from "@/content/dictionary";
+import { buildMetadata } from "@/lib/metadata";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Archive from "@/components/Archive";
 import Catalog from "@/components/Catalog";
-import NotFound from "@/components/NotFound";
 
 type Kind = "archive" | "catalog";
 
@@ -36,20 +37,21 @@ export async function generateMetadata({
   const kind = resolveKind(locale, slug);
   const dict = getDictionary(locale);
   if (kind === "archive") {
-    return {
+    return buildMetadata({
+      locale,
+      path: `/${slug}`,
       title: `${dict.archive.heading} | Zayyan Rizka`,
       description: dict.archive.intro,
-      alternates: {
-        canonical: `/${locale}/${slug}`,
-        languages: { id: "/id/proyek", en: "/en/projects" },
-      },
-    };
+    });
   }
   if (kind === "catalog") {
-    return {
+    return buildMetadata({
+      locale,
+      path: `/${slug}`,
       title: `${dict.catalog.heading} | Zayyan Rizka`,
-      robots: { index: false },
-    };
+      description: dict.catalog.intro,
+      index: false,
+    });
   }
   return {};
 }
@@ -60,24 +62,18 @@ export default async function SlugPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const valid: Locale = isLocale(locale) ? locale : "id";
-  const kind = resolveKind(valid, slug);
-  if (!kind) {
-    return (
-      <>
-        <Navbar locale={valid} />
-        <main>
-          <NotFound locale={valid} />
-        </main>
-        <Footer locale={valid} />
-      </>
-    );
-  }
+  if (!isLocale(locale)) notFound();
+  const kind = resolveKind(locale, slug);
+  if (!kind) notFound();
   return (
     <>
-      <Navbar locale={valid} activePage={kind === "archive" ? "archive" : undefined} />
-      <main>{kind === "archive" ? <Archive locale={valid} /> : <Catalog locale={valid} />}</main>
-      <Footer locale={valid} />
+      <Navbar
+        locale={locale}
+        activePage={kind === "archive" ? "archive" : undefined}
+        path={`/${slug}`}
+      />
+      <main>{kind === "archive" ? <Archive locale={locale} /> : <Catalog locale={locale} />}</main>
+      <Footer locale={locale} />
     </>
   );
 }

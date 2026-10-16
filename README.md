@@ -1,19 +1,23 @@
 # Portofolio — Zayyan Rizka
 
-Website portofolio satu halaman, dua bahasa (Indonesia default + Inggris), dibangun dengan **Next.js + TypeScript + Tailwind CSS + Framer Motion**. Desain berbasis estetika minimalis dengan coretan tangan — semua kode & SVG 100% orisinal.
+Website portofolio satu halaman, dua bahasa (Indonesia default + Inggris), dibangun dengan **Next.js + TypeScript + Tailwind CSS**. Desain berbasis estetika minimalis dengan coretan tangan — semua kode & SVG 100% orisinal.
 
 ## Menjalankan secara lokal
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000 → redirect ke /id
-npm run build    # build produksi
-npm run start    # jalankan hasil build
+npm run dev       # http://localhost:3000 → redirect ke /id
+npm run build     # build produksi
+npm run start     # jalankan hasil build
+npm run lint      # ESLint
+npm run typecheck # cek tipe TypeScript
 ```
 
 ## Mengedit konten
 
-**Semua teks ada di satu file:** `src/content/dictionary.ts` — versi Indonesia (`id`) dan Inggris (`en`) berdampingan per bagian (hero, proyek, tentang, kontak, arsip, katalog). Edit di sana, simpan, situs otomatis berubah.
+**Teks antarmuka ada di satu file:** `src/content/dictionary.ts` — versi Indonesia (`id`) dan Inggris (`en`) berdampingan per bagian (hero, proyek, tentang, kontak, arsip, katalog). Edit di sana, simpan, situs otomatis berubah.
+
+**Isi studi kasus ada di** `src/content/cases.ts` (bagian `caseStudies`), juga dua bahasa.
 
 **Menambah proyek baru ke Arsip Proyek** (`/id/proyek` · `/en/projects`):
 1. Buka `src/content/dictionary.ts`, cari `projects.items`.
@@ -34,8 +38,7 @@ Halaman tersembunyi **/design-system** adalah katalog visual semua warna, tipogr
 
 ## ⚠️ Sebelum link situs disebar — checklist
 
-- [ ] **Taruh `cv.pdf` di folder `public/`** — tombol "Unduh CV" akan 404 tanpa file ini
-- [ ] Lengkapi placeholder **KSM Multimedia** di `dictionary.ts` (bagian `about.activities`) — atau hapus barisnya
+- [x] **Taruh `cv.pdf` di folder `public/`** — tombol "Unduh CV" akan 404 tanpa file ini
 - [ ] LinkedIn sudah rapi & bisa dilihat publik
 - [ ] Klik semua link satu per satu
 - [ ] Cek tampilan di HP
@@ -71,15 +74,19 @@ vercel --prod
 │   └── cv.pdf            # ← taruh CV-mu di sini
 ├── src/
 │   ├── app/
-│   │   ├── [locale]/     # /id & /en: beranda + [slug] (proyek, design-system)
+│   │   ├── [locale]/     # /id & /en: beranda, [slug] (proyek, design-system),
+│   │   │                 # [slug]/[case] (studi kasus), not-found, opengraph-image
 │   │   ├── globals.css   # design tokens (warna, font, skala)
 │   │   ├── icon.svg      # favicon
-│   │   ├── opengraph-image.tsx
 │   │   ├── sitemap.ts / robots.ts
 │   ├── components/       # Navbar, Hero, HeroPortrait, Projects, Archive,
-│   │                     # Catalog, About, Contact, Footer, scribbles, Reveal
+│   │                     # Catalog, CaseStudy, About, Contact, Footer,
+│   │                     # scribbles, Reveal, LocaleSwap
 │   ├── content/
-│   │   └── dictionary.ts # ← SEMUA teks dua bahasa
+│   │   ├── dictionary.ts # ← SEMUA teks antarmuka, dua bahasa
+│   │   └── cases.ts      # isi studi kasus, dua bahasa
+│   ├── lib/
+│   │   └── metadata.ts   # canonical, hreflang, Open Graph per halaman
 │   └── middleware.ts     # redirect / → /id
 └── scripts/
     └── proses-foto.py    # crop + hapus latar foto hero
