@@ -91,7 +91,7 @@ export const caseStudies: Record<CaseSlug, Record<Locale, CaseContent>> = {
       links: {
         live: { label: "Kunjungi Website", href: "https://pkm-upnvj.vercel.app" },
         github: { href: "https://github.com/rzayyanr/pkm-upnvj" },
-        docs: { label: "PRD & ADR", href: "https://github.com/rzayyanr/pkm-upnvj/tree/master/docs" },
+        docs: null,
       },
     },
     en: {
@@ -151,7 +151,7 @@ export const caseStudies: Record<CaseSlug, Record<Locale, CaseContent>> = {
       links: {
         live: { label: "Visit Website", href: "https://pkm-upnvj.vercel.app" },
         github: { href: "https://github.com/rzayyanr/pkm-upnvj" },
-        docs: { label: "PRD & ADRs", href: "https://github.com/rzayyanr/pkm-upnvj/tree/master/docs" },
+        docs: null,
       },
     },
   },
