@@ -62,10 +62,14 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
         </Reveal>
 
         {/* Gambar proyek di kiri, kartu statistik di kanan, mengikuti pola di
-            referensi. Di bawah 1280 pixel kolomnya sempit, jadi keduanya
+            referensi. Dari 1024 pixel ke atas keduanya sudah berdampingan
+            dengan lebar yang dibagi menurut perbandingan, bukan lebar tetap,
+            supaya layar laptop pun ikut berdampingan. Dari 1280 pixel ke atas
+            kolom gambarnya dikunci 720 pixel seperti semula, karena di layar
+            selebar itu ruangnya memang cukup. Di bawah 1024 pixel keduanya
             ditumpuk ke bawah supaya angkanya tetap terbaca. */}
         <Reveal delay={0.1}>
-          <div className="mt-12 grid items-start gap-8 xl:grid-cols-[minmax(0,720px)_1fr] xl:gap-10">
+          <div className="mt-12 grid items-start gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,720px)_1fr]">
             <Image
               src={c.image}
               alt={c.imageAlt}
@@ -74,12 +78,12 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
               priority
               className="sticker w-full bg-white [--tilt:-0.3deg]"
             />
-            <dl className="sticker grid gap-6 bg-btn p-7 [--tilt:0.4deg] sm:grid-cols-3 xl:grid-cols-1">
+            <dl className="sticker grid gap-6 bg-btn p-7 [--tilt:0.4deg] sm:grid-cols-3 lg:grid-cols-1">
               {c.stats.map((stat) => (
                 /* flex-col-reverse: nilai tampil di atas label, urutan DOM tetap dt lalu dd. */
                 <div key={stat.label} className="flex flex-col-reverse">
                   <dt className="mt-2 text-[13px] text-body">{stat.label}</dt>
-                  <dd className="text-[34px] font-bold leading-none text-ink sm:text-[48px] xl:text-[40px]">
+                  <dd className="text-[34px] font-bold leading-none text-ink sm:text-[48px] lg:text-[40px]">
                     {stat.value}
                   </dd>
                 </div>
@@ -90,7 +94,10 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
 
         {/* Empat bagian dipisah jadi empat kotak sendiri yang berselang-seling
             kiri dan kanan, supaya halamannya tidak terasa penuh. Di sisi
-            seberangnya ditemani potongan tangkapan layar proyek. */}
+            seberangnya ditemani potongan tangkapan layar proyek. Sama seperti
+            blok atas: dari 1024 pixel keduanya berdampingan dengan lebar yang
+            dibagi menurut perbandingan, lalu dari 1280 pixel ke atas kolom
+            teksnya dikunci 720 pixel. */}
         {c.sections.map((section, index) => {
           const gambarDiKiri = index % 2 === 1;
           const gambar = gambarBagian(caseSlug, section.number);
@@ -99,10 +106,10 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
               <div
                 className={
                   gambar
-                    ? `grid items-center gap-8 xl:gap-10 ${
+                    ? `grid items-center gap-8 lg:gap-10 ${
                         gambarDiKiri
-                          ? "xl:grid-cols-[minmax(0,1fr)_minmax(0,720px)]"
-                          : "xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)]"
+                          ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,720px)]"
+                          : "lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)]"
                       }`
                     : "grid max-w-[1000px]"
                 }
@@ -110,7 +117,7 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
                 <article
                   className={`sticker bg-white p-7 sm:p-10 ${
                     index % 2 === 0 ? "[--tilt:-0.3deg]" : "[--tilt:0.3deg]"
-                  } ${gambar && gambarDiKiri ? "xl:order-2" : ""}`}
+                  } ${gambar && gambarDiKiri ? "lg:order-2" : ""}`}
                 >
                   <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
                     <span className="text-[56px] font-bold leading-none text-accent">
@@ -146,14 +153,14 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
                   <figure
                     className={`sticker bg-white p-2 ${
                       index % 2 === 0 ? "[--tilt:0.4deg]" : "[--tilt:-0.4deg]"
-                    } ${gambarDiKiri ? "xl:order-1" : ""}`}
+                    } ${gambarDiKiri ? "lg:order-1" : ""}`}
                   >
                     <Image
                       src={gambar}
                       alt={section.imageAlt ?? `${c.title} · ${section.title}`}
                       width={0}
                       height={0}
-                      sizes="(min-width: 1280px) 370px, 100vw"
+                      sizes="(min-width: 1280px) 370px, (min-width: 1024px) 420px, 100vw"
                       className="h-auto w-full"
                     />
                   </figure>
