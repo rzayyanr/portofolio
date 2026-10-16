@@ -1,5 +1,4 @@
 import { getDictionary, type Locale } from "@/content/dictionary";
-import ContactPixelCat from "./ContactPixelCat";
 import Reveal from "./Reveal";
 
 export default function Contact({ locale }: { locale: Locale }) {
@@ -9,9 +8,6 @@ export default function Contact({ locale }: { locale: Locale }) {
       <div className="container-site">
         <Reveal>
           <div className="sticker relative mx-auto max-w-[820px] bg-white px-7 py-12 text-center [--tilt:0.2deg] sm:px-10 lg:py-16">
-            {/* Kucing duduk di tepi atas kartu. Tinggi sprite 39 px, jadi -25 px
-                membuat kaki depannya masuk sekitar 14 px ke dalam kartu. */}
-            <ContactPixelCat className="absolute -left-1 -top-[25px] z-10" />
             <span
               aria-hidden="true"
               className="contact-tape pointer-events-none absolute left-1/2 -top-[13px] z-20 h-7 w-24 -translate-x-1/2"

@@ -344,52 +344,6 @@ body {
   }
 }
 
-/* Kucing pixel putih di sudut kotak kontak. Siluetnya sama dengan kucing hitam
-   di bagian pengalaman, jadi yang membedakan hanya warnanya. Garis tepi tinta
-   menjaga bentuknya tetap terbaca di atas kertas putih dan grid. Gerakannya
-   menukar lapisan mata, bukan memutar bentuk: memutar akan merusak petaknya. */
-.contact-pixel-cat {
-  display: block;
-  overflow: visible;
-}
-
-.contact-pixel-cat__mata-buka {
-  animation: cat-kedip 4.6s steps(1) infinite;
-}
-
-.contact-pixel-cat__mata-tutup {
-  opacity: 0;
-  animation: cat-kedip-tutup 4.6s steps(1) infinite;
-}
-
-@keyframes cat-kedip-tutup {
-  0%,
-  92% {
-    opacity: 0;
-  }
-
-  92.1%,
-  96% {
-    opacity: 1;
-  }
-
-  96.1%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-pixel-cat__mata-buka,
-  .contact-pixel-cat__mata-tutup {
-    animation: none;
-  }
-
-  .contact-pixel-cat__mata-tutup {
-    opacity: 0;
-  }
-}
-
 .contact-tape {
   background-color: color-mix(in srgb, var(--color-scribble-red) 72%, transparent);
   background-image: repeating-linear-gradient(

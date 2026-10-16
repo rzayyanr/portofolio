@@ -1,5 +1,3 @@
-import { keJalur } from "./pixelSprite";
-
 // Kucing pixel yang duduk di tepi atas kotak Pengalaman & Kegiatan.
 //
 // Digambar dari peta karakter, bukan dari berkas gambar, supaya pixelnya tetap
@@ -79,6 +77,35 @@ function frameEkor(frame: number): string[] {
   });
 }
 
+/**
+ * Mengubah peta karakter jadi satu jalur SVG, satu sub-jalur per kelompok pixel
+ * yang bersebelahan. Jauh lebih ringkas daripada satu kotak per pixel.
+ */
+function keJalur(peta: string[], geserY: number, hanyaMata = false): string {
+  const bagian: string[] = [];
+  peta.forEach((baris, y) => {
+    let x = 0;
+    while (x < baris.length) {
+      const cocok = hanyaMata ? baris[x] === "o" : baris[x] === "#" || baris[x] === "o";
+      if (cocok) {
+        let lebar = 1;
+        while (
+          hanyaMata
+            ? baris[x + lebar] === "o"
+            : baris[x + lebar] === "#" || baris[x + lebar] === "o"
+        ) {
+          lebar += 1;
+        }
+        bagian.push(`M${x} ${y + geserY}h${lebar}v1h-${lebar}z`);
+        x += lebar;
+      } else {
+        x += 1;
+      }
+    }
+  });
+  return bagian.join("");
+}
+
 export default function PixelCat({ className }: { className?: string }) {
   return (
     <svg
@@ -96,14 +123,14 @@ export default function PixelCat({ className }: { className?: string }) {
             className="pixel-cat__ekor-frame"
             style={{ animationDelay: `${(-frame * DURASI_FRAME).toFixed(2)}s` }}
           >
-            <path d={keJalur(frameEkor(frame), "#", TINGGI)} fill="#131313" />
+            <path d={keJalur(frameEkor(frame), TINGGI)} fill="#131313" />
           </g>
         ))}
       </g>
       <g className="pixel-cat__badan">
-        <path d={keJalur(badan, ["#", "o"])} fill="#131313" />
+        <path d={keJalur(badan, 0)} fill="#131313" />
         <g className="pixel-cat__mata">
-          <path d={keJalur(badan, "o")} fill="#A6E22E" />
+          <path d={keJalur(badan, 0, true)} fill="#A6E22E" />
         </g>
       </g>
     </svg>
