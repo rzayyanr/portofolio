@@ -95,11 +95,11 @@ export default function About({ locale }: { locale: Locale }) {
                       <div className="group relative flex gap-4">
                         <span
                           aria-hidden="true"
-                          className="relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 border-scribble-blue bg-white text-ink transition-transform duration-200 group-hover:scale-125"
+                          className="activity-icon relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 border-scribble-blue bg-white text-ink transition-transform duration-200 group-hover:scale-125"
                         >
                           {activityIcons[activity.icon]}
                         </span>
-                        <div className="pt-0.5 transition-transform duration-200 group-hover:translate-x-1">
+                        <div className="activity-copy pt-0.5 transition-transform duration-200 group-hover:translate-x-1">
                           <p className="font-semibold text-ink">{activity.name}</p>
                           <p className="mt-1 text-[14px] leading-relaxed text-muted">
                             {activity.note}

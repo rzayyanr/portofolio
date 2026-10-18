@@ -8,8 +8,8 @@ Situs satu halaman utama + 2 halaman pendukung. Routing: `/` → redirect `/id`;
 │   ├─ Navbar        — nama kiri; Proyek · GitHub · LinkedIn · toggle ID/EN kanan
 │   ├─ Hero          — id="beranda" · 110vh · kalimat besar + coretan SVG +
 │   │                  foto cutout · CTA: Lihat Proyek / Unduh CV
-│   ├─ Proyek        — id="proyek" · 2 kartu unggulan berselang-seling 7/5:
-│   │                  PKM UPNVJ → CapSL · tombol "Lihat semua proyek →"
+│   ├─ Proyek        — id="proyek" · 3 kartu unggulan berselang-seling 7/5:
+│   │                  PKM UPNVJ → CapSL → Luma · tombol "Lihat semua proyek →"
 │   ├─ Tentang       — id="tentang" · cerita + cara kerja + kegiatan + skill
 │   ├─ Kontak        — id="kontak" · "Kirim saya email" + link sosial
 │   └─ Footer        — kredit + ©

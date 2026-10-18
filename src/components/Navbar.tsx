@@ -38,7 +38,9 @@ export default function Navbar({
   const dict = getDictionary(locale);
   const other: Locale = locale === "id" ? "en" : "id";
   return (
-    <header className="sticky top-0 z-30 border-b-[1.5px] border-ink bg-white/85 backdrop-blur-md">
+    <>
+      <a href="#main-content" className="skip-link">{dict.nav.skipToContent}</a>
+      <header className="sticky top-0 z-30 border-b-[1.5px] border-ink bg-white/85 backdrop-blur-md">
       <div className="container-site flex flex-col gap-2 py-3 sm:h-[76px] sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-0">
         <a
           href={`/${locale}`}
@@ -62,7 +64,7 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.githubAria}
-            className="p-1 text-ink transition-colors hover:text-accent"
+            className="flex h-11 w-11 shrink-0 items-center justify-center text-ink transition-colors hover:text-accent sm:h-auto sm:w-auto sm:p-1"
           >
             <GithubIcon />
           </a>
@@ -71,7 +73,7 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.linkedinAria}
-            className="p-1 text-ink transition-colors hover:text-accent"
+            className="flex h-11 w-11 shrink-0 items-center justify-center text-ink transition-colors hover:text-accent sm:h-auto sm:w-auto sm:p-1"
           >
             <LinkedinIcon />
           </a>
@@ -80,7 +82,7 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label={dict.nav.instagramAria}
-            className="p-1 text-ink transition-colors hover:text-accent"
+            className="flex h-11 w-11 shrink-0 items-center justify-center text-ink transition-colors hover:text-accent sm:h-auto sm:w-auto sm:p-1"
           >
             <InstagramIcon />
           </a>
@@ -93,8 +95,9 @@ export default function Navbar({
             {dict.nav.toLang}
           </a>
         </nav>
-      </div>
-      <ReadingProgress />
-    </header>
+        </div>
+        <ReadingProgress />
+      </header>
+    </>
   );
 }

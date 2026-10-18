@@ -206,7 +206,7 @@ export default function CaseStudy({ locale, caseSlug }: Props) {
               <p className="text-[13px] text-muted">{dict.case.next}</p>
               <p className="mt-1 text-[20px] font-bold text-ink">{next.title}</p>
             </div>
-            <span aria-hidden="true" className="text-[24px] text-ink transition-transform duration-200 group-hover:translate-x-1">
+            <span aria-hidden="true" className="next-case-arrow text-[24px] text-ink transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>
           </a>

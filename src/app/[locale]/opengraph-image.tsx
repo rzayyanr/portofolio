@@ -7,7 +7,17 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const runtime = "nodejs";
 
-export default async function OpengraphImage() {
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isEnglish = locale === "en";
+  const heading = isEnglish ? "PORTFOLIO" : "PORTOFOLIO";
+  const description = isEnglish
+    ? "A frontend engineer building clean and useful web products."
+    : "Frontend engineer yang membangun produk web yang rapi dan berguna.";
   const photoBuffer = await readFile(
     path.join(process.cwd(), "public", "images", "foto-final.png")
   );
@@ -44,7 +54,7 @@ export default async function OpengraphImage() {
               letterSpacing: 6,
             }}
           >
-            PORTOFOLIO
+            {heading}
           </div>
           <div
             style={{
@@ -77,7 +87,7 @@ export default async function OpengraphImage() {
               maxWidth: 620,
             }}
           >
-            Frontend engineer yang membangun produk web yang rapi dan berguna.
+            {description}
           </div>
         </div>
         <div

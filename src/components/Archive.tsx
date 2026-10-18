@@ -38,7 +38,8 @@ export default function Archive({ locale }: { locale: Locale }) {
                     alt={project.imageAlt}
                     width={1280}
                     height={800}
-                    className="w-full transition-transform duration-300 group-hover:scale-[1.03]"
+                    sizes="(min-width: 1300px) 355px, (min-width: 1024px) calc(33.3333vw - 78.667px), (min-width: 992px) calc(50vw - 102px), (min-width: 640px) calc(50vw - 66px), (min-width: 480px) calc(100vw - 100px), calc(100vw - 40px)"
+                    className="project-thumbnail w-full transition-transform duration-300 group-hover:scale-[1.03]"
                   />
                   </a>
                 ) : (
@@ -48,6 +49,7 @@ export default function Archive({ locale }: { locale: Locale }) {
                       alt={project.imageAlt}
                       width={1280}
                       height={800}
+                      sizes="(min-width: 1300px) 355px, (min-width: 1024px) calc(33.3333vw - 78.667px), (min-width: 992px) calc(50vw - 102px), (min-width: 640px) calc(50vw - 66px), (min-width: 480px) calc(100vw - 100px), calc(100vw - 40px)"
                       className="w-full"
                     />
                   </div>

@@ -44,7 +44,7 @@
 
 ---
 
-## 3. Proyek (2 unggulan, tampil berselang-seling)
+## 3. Proyek (3 unggulan, tampil berselang-seling)
 
 ### 3.1 PKM UPNVJ
 

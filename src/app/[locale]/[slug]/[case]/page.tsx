@@ -53,7 +53,7 @@ export default async function CasePage({ params }: Props) {
   return (
     <>
       <Navbar locale={locale} activePage="archive" path={`/${slug}/${caseSlug}`} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <CaseStudy locale={locale} caseSlug={resolved} />
       </main>
       <Footer locale={locale} />

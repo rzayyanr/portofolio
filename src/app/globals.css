@@ -3,7 +3,7 @@
 @theme {
   --color-ink: #131313;
   --color-body: #5a6065;
-  --color-muted: #69737c;
+  --color-muted: #5d6872;
   --color-accent: #1e8bf1;
   --color-accent-dark: #005bb1;
   --color-scribble-blue: #a4dcfe;
@@ -127,6 +127,45 @@ body {
 @media (max-width: 479px) {
   .container-site {
     padding-inline: 20px;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 50;
+  transform: translateY(-200%);
+  border: 2px solid var(--color-ink);
+  border-radius: 0.375rem;
+  background: white;
+  padding: 0.75rem 1rem;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--color-accent-dark);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activity-icon,
+  .activity-copy,
+  .project-thumbnail,
+  .next-case-arrow {
+    transition: none !important;
+  }
+
+  .activity-icon,
+  .project-thumbnail {
+    scale: 1 !important;
+  }
+
+  .activity-copy,
+  .next-case-arrow {
+    translate: 0 0 !important;
   }
 }
 

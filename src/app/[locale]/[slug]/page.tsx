@@ -72,7 +72,9 @@ export default async function SlugPage({
         activePage={kind === "archive" ? "archive" : undefined}
         path={`/${slug}`}
       />
-      <main>{kind === "archive" ? <Archive locale={locale} /> : <Catalog locale={locale} />}</main>
+      <main id="main-content" tabIndex={-1}>
+        {kind === "archive" ? <Archive locale={locale} /> : <Catalog locale={locale} />}
+      </main>
       <Footer locale={locale} />
     </>
   );

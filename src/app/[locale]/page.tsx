@@ -19,7 +19,7 @@ export default async function Page({
   return (
     <>
       <Navbar locale={locale} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero locale={locale} />
         <About locale={locale} />
         <Projects locale={locale} />

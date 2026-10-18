@@ -54,6 +54,7 @@ export const dictionary = {
       toLangAria: "Beralih ke bahasa Inggris",
       githubAria: "GitHub Zayyan Rizka",
       linkedinAria: "LinkedIn Zayyan Rizka",
+      skipToContent: "Lewati ke konten utama",
     },
     hero: {
       nameLabel: "halo, saya",
@@ -268,6 +269,7 @@ export const dictionary = {
       toLangAria: "Switch to Indonesian",
       githubAria: "Zayyan Rizka on GitHub",
       linkedinAria: "Zayyan Rizka on LinkedIn",
+      skipToContent: "Skip to main content",
     },
     hero: {
       nameLabel: "hi, I'm",

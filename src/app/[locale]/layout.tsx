@@ -43,7 +43,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const validLocale: Locale = isLocale(locale) ? locale : "id";
   return (
-    <html lang={validLocale} className={publicSans.variable}>
+    <html lang={validLocale} className={publicSans.variable} suppressHydrationWarning>
       <head>
         {/* Menandai bahwa JS aktif supaya animasi masuk tidak menyembunyikan konten
             ketika JavaScript gagal dimuat. */}

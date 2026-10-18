@@ -8,7 +8,7 @@ function Variant({ locale }: { locale: Locale }) {
   return (
     <>
       <Navbar locale={locale} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <NotFound locale={locale} />
       </main>
       <Footer locale={locale} />
