@@ -14,7 +14,7 @@
 | Nama situs | Zayyan Rizka | Zayyan Rizka |
 | Judul tab | Zayyan Rizka — Frontend Engineer & Mahasiswa Sistem Informasi | Zayyan Rizka — Frontend Engineer & Information Systems Student |
 | Meta deskripsi | Mahasiswa Sistem Informasi UPN Veteran Jakarta yang membangun produk web yang rapi dan berguna — portal PKM kampus & aplikasi belajar bahasa isyarat. | An Information Systems student at UPN Veteran Jakarta who builds clean and useful web products — a campus PKM portal & a sign-language learning app. |
-| Subdomain | rzayyanr.vercel.app | — |
+| Domain | zayyan.tech | — |
 | Email | rzayyanrizka@gmail.com | — |
 | GitHub | https://github.com/rzayyanr | — |
 | LinkedIn | https://www.linkedin.com/in/rzayyanr/ | — |

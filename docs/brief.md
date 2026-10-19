@@ -11,7 +11,7 @@ Website portofolio satu halaman untuk mendukung **pendaftaran Apple Developer Ac
 - Nama brand: **Zayyan Rizka** (lengkap: Muhammad Zayyan Rizka)
 - Mahasiswa S1 Sistem Informasi semester 5, UPN "Veteran" Jakarta
 - Kontak: rzayyanrizka@gmail.com · linkedin.com/in/rzayyanr · github.com/rzayyanr
-- Hosting: Vercel → rzayyanr.vercel.app
+- Hosting: Vercel → zayyan.tech (alamat bawaan rzayyanr.vercel.app masih hidup)
 
 ## Keputusan inti
 | Aspek | Keputusan |

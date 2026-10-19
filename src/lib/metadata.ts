@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { localizePath, type Locale } from "@/content/dictionary";
 
-export const siteUrl = "https://rzayyanr.vercel.app";
+export const siteUrl = "https://zayyan.tech";
 const siteName = "Zayyan Rizka";
 
 /**

@@ -54,7 +54,7 @@ Halaman tersembunyi **/design-system** adalah katalog visual semua warna, tipogr
    git push -u origin main
    ```
 2. Di [vercel.com/new](https://vercel.com/new), import repo tersebut — pengaturan default (framework: Next.js) sudah cukup. Deploy.
-3. Ubah nama produksi di Settings → General → "Renew Project Name" menjadi `rzayyanr` agar URL-nya `rzayyanr.vercel.app`.
+3. Ubah nama produksi di Settings → General → "Renew Project Name" menjadi `rzayyanr` agar alamat bawaannya `rzayyanr.vercel.app`. Domain resminya sekarang `zayyan.tech`, diatur di Settings → Domains.
 
 **Cara 2 — Vercel CLI:**
 

@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { localizedSlugs, locales } from "@/content/dictionary";
+import { siteUrl } from "@/lib/metadata";
 
-const base = "https://rzayyanr.vercel.app";
+const base = siteUrl;
 
 /** Ubah tanggal ini setiap kali isi situs berubah; jangan pakai waktu build. */
 const contentUpdated = new Date("2026-10-16");
